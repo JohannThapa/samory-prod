@@ -1,0 +1,35 @@
+<div class="chart-container shadow-xs mx-auto max-w-4xl overflow-hidden p-6">
+  <div class="mb-6 flex flex-col items-start justify-between sm:flex-row sm:items-center">
+    <div class="mb-4 flex flex-col items-start space-y-2 sm:mb-0 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-4">
+      <h2 class="text-base font-semibold text-[#230448]">{{ chartTitle() }}</h2>
+    </div>
+  </div>
+
+  <div class="mx-auto flex h-auto w-[300px] justify-center">
+    <ngx-charts-pie-chart
+      [view]="view()"
+      [scheme]="colorScheme()"
+      [results]="chartData()"
+      [legend]="false"
+      [doughnut]="false"
+      [labels]="false"
+      [legendPosition]="legendPosition"
+      [tooltipDisabled]="false"
+      [gradient]="gradient()"
+      [animations]="animations()">
+    </ngx-charts-pie-chart>
+  </div>
+  <div class="mx-auto mt-6 max-w-xs px-4">
+    <div class="flex flex-col space-y-2">
+      @for (item of legendItems(); track item.label) {
+      <div class="flex items-center justify-between space-x-2 border-b border-gray-200 py-2 text-sm last:border-b-0">
+        <div class="flex items-center space-x-2">
+          <span class="h-2.5 w-2.5 rounded-full" [style.background-color]="item.color"></span>
+          <span class="text-primary text-sm">{{ item.label }}</span>
+        </div>
+        <span class="text-primary text-sm font-medium">{{ item.value }}%</span>
+      </div>
+      }
+    </div>
+  </div>
+</div>

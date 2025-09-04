@@ -1,0 +1,15 @@
+.bubble-with-pointer {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  .bubble-with-pointer::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; /* Adjust this value to control the distance from the bubble */
+    left: 15px; /* Adjust this value to control the horizontal position */
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid #10b981;
+  }

@@ -1,0 +1,78 @@
+<div class="px-6 py-8">
+  <div class="mb-4">
+    <h1 class="mb-2 text-2xl font-bold text-[#230448]">My Diagnostic Applications</h1>
+    <p class="text-gray-500">
+      Browse all verified organizations to view their diagnostic activity and contact details.
+    </p>
+  </div>
+
+  <app-filer-my-diagnostic
+    [statuses]="statuses()"
+    [diagnosticTypes]="diagnosticTypes()"
+    [viewMode]="viewMode()"
+    (filterChange)="onFilterChange($event)"
+    (viewChange)="onViewChange($event)" />
+
+  <div *ngIf="viewMode() === 'list'" class="mt-6">
+    <ui-data-table
+      #table
+      [title]="'Diagnostic List'"
+      [columns]="columns"
+      [rows]="diagnostics()"
+      [isStrip]="true"
+      [tableWidthClass]="'min-w-full'"
+      [statusBadgeMap]="statusMap"
+      (action)="onAction($event)"
+      (rowClick)="onRowClick($event)"
+      class="w-full">
+      <ng-template dtCell="diagnostic" let-row>
+        <span class="text-[14px] font-medium text-[#2A1F4D]">{{ row.label }}</span>
+      </ng-template>
+
+      <ng-template dtCell="organization" let-row>
+        <ui-org-cell
+          [avatar]="row.organization.avatar"
+          [primary]="row.organization.name"
+          [secondary]="row.organization.sub" />
+      </ng-template>
+
+      <ng-template dtCell="justification" let-row>
+        <div class="max-w-[200px] truncate text-gray-700">
+          {{ row.justification }}
+        </div>
+      </ng-template>
+
+      <ng-template dtCell="statusPill" let-row>
+        <span
+          class="inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-semibold"
+          [ngClass]="statusMap[row.status].classes || 'bg-gray-100 text-gray-700 '">
+          {{ row.status }}
+        </span>
+      </ng-template>
+
+      <ng-template dtCell="progress" let-row>
+        <span class="text-[#2A1F4D]">{{ row.progress }}</span>
+      </ng-template>
+
+      <ng-template dtCell="actions" let-row let-table="table">
+        <div class="relative">
+          <button
+            type="button"
+            (click)="table.emitAction('menu', row, $event)"
+            class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white ring-1 ring-violet-200 hover:bg-violet-50"
+            aria-label="Open actions">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-[#2A1F4D]">
+              <circle cx="12" cy="5" r="2"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+              <circle cx="12" cy="19" r="2"></circle>
+            </svg>
+          </button>
+        </div>
+      </ng-template>
+    </ui-data-table>
+  </div>
+
+  <div *ngIf="viewMode() === 'grid'" class="mt-6">
+    <app-diagnostic-card-grid [diagnostics]="diagnostics()" />
+  </div>
+</div>

@@ -1,0 +1,6 @@
+export enum UserType {
+  ORGANIZATION = 'ORGANIZATION',
+  CYBER_HELPER = 'CYBER_HELPER',
+  ADMIN = 'ADMIN',
+  SUPER_ADMIN = 'SADMIN',
+}

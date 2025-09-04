@@ -1,0 +1,15 @@
+<div class="mt-24 bg-white">
+  <div class="container mx-auto grid grid-cols-1 gap-8 px-6 py-12 lg:grid-cols-4">
+    <div class="space-y-12 lg:col-span-3">
+      <app-article-header [article]="article"></app-article-header>
+
+      <app-article-content [article]="article"></app-article-content>
+
+      <app-article-faq [faqs]="article?.faqs || []"></app-article-faq>
+    </div>
+
+    <div class="lg:col-span-1">
+      <app-article-toc [sections]="article?.sections || []"></app-article-toc>
+    </div>
+  </div>
+</div>

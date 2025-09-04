@@ -1,0 +1,44 @@
+<div [id]="isScrolled ? 'trav' : ''" class="flex items-center space-x-6 text-sm font-semibold">
+  <ng-container *ngFor="let menu of menuService.pagesMenu">
+    <div *ngIf="!menu.children" class="relative">
+      <a
+        [routerLink]="menu.route"
+        routerLinkActive=" border-b-2 border-white"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [ngClass]="{
+          'text-primary': !isHomePage,
+          'neon-purple hover:text-primary': isScrolled,
+          'text-gray-300 hover:text-white': !isScrolled
+        }"
+        class="transition-colors duration-200">
+        {{ menu.label }}
+      </a>
+    </div>
+
+    <div *ngIf="menu.children" class="group relative">
+      <button
+        [ngClass]="{
+          'text-primary': !isHomePage,
+          'neon-purple hover:text-primary': isScrolled,
+          'text-gray-300 hover:text-white': !isScrolled
+        }"
+        class="transition-colors duration-200">
+        <span class="flex items-center">
+          {{ menu.label }}
+          <svg
+            class="ml-1 h-4 w-4 transform transition-transform group-hover:rotate-180"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </span>
+      </button>
+      <ul
+        navbar-submenu
+        [submenu]="menu.children"
+        class="pointer-events-none z-50 opacity-0 transition-opacity duration-200 ease-in-out group-hover:pointer-events-auto group-hover:opacity-100"></ul>
+    </div>
+  </ng-container>
+</div>

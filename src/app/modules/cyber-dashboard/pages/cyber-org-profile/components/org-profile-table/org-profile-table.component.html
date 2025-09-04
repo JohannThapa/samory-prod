@@ -1,0 +1,32 @@
+<ui-data-table
+  [columns]="columns"
+  [rows]="diagnosticEntries"
+  [isStrip]="true"
+  title="Diagnostic History"
+  [tableWidthClass]="'min-w-full'">
+  <ng-template dtCell="completedOnCell" let-row>
+    <span class="text-[#230448CC]">{{ row.completedOn || '-' }}</span>
+  </ng-template>
+
+  <ng-template dtCell="statusPill" let-row>
+    <span
+      *ngIf="statusBadgeMap[row.status] && statusBadgeMap[row.status]?.classes"
+      class="inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-semibold"
+      [ngClass]="statusBadgeMap[row.status].classes || 'bg-gray-100 text-gray-700'">
+      {{ row.status }}
+    </span>
+  </ng-template>
+
+  <ng-template dtCell="progressCell" let-row>
+    <span class="text-[#230448CC]">{{ row.progress }}%</span>
+  </ng-template>
+
+  <ng-template dtCell="actionsCell" let-row>
+    <button
+      type="button"
+      (click)="viewDiagnostic.emit(row)"
+      class="text-sm font-medium text-violet-600 hover:text-violet-800">
+      View &rarr;
+    </button>
+  </ng-template>
+</ui-data-table>

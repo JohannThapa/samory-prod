@@ -1,0 +1,29 @@
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <div
+    *ngFor="let org of organizations"
+    class="flex flex-col justify-between rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+    <div>
+      <div class="mb-4 flex items-center space-x-4 border-b pb-4">
+        <img [src]="org.avatar" alt="logo" class="h-12 w-12 rounded-full" />
+        <div>
+          <h3 class="text-lg font-semibold text-[#230448]">{{ org.name }}</h3>
+          <p class="text-sm text-gray-500">{{ org.city }}</p>
+        </div>
+      </div>
+      <div class="space-y-2 text-sm">
+        <p class="text-gray-600"><span class="font-medium text-[#230448]">Type:</span> {{ org.type }}</p>
+        <p class="text-gray-600">
+          <span class="font-medium text-[#230448]">Website:</span>
+          <a [href]="'https://' + org.website" target="_blank" class="text-violet-600 hover:underline">
+            {{ org.website }}
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="mt-6 text-right">
+      <button (click)="viewDetails.emit(org)" class="font-medium text-violet-600 hover:text-violet-800">
+        View &rarr;
+      </button>
+    </div>
+  </div>
+</div>

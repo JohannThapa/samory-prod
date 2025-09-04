@@ -1,0 +1,108 @@
+<div class="relative bg-transparent">
+  <div class="mx-auto px-5">
+    <div class="flex items-center justify-between py-3.5 md:justify-start">
+      <!-- Mobile Navigation Menu Button-->
+      <div class="sm:order-1 md:hidden">
+        <button
+          (click)="toggleMobileMenu()"
+          type="button"
+          class="bg-muted text-muted-foreground focus:ring-primary hover:bg-muted-foreground hover:text-muted inline-flex items-center justify-center rounded-md p-2 focus:outline-hidden focus:ring-2 focus:ring-inset"
+          aria-expanded="false">
+          <span class="sr-only">Open menu</span>
+          <!-- Heroicon name: outline/menu -->
+          <svg-icon src="assets/icons/heroicons/outline/menu.svg" [svgClass]="'h-6 w-6'"> </svg-icon>
+        </button>
+      </div>
+
+      <!-- Logo -->
+      <div class="flex items-center justify-start gap-3 sm:order-2 ltr:md:mr-10 rtl:md:ml-10 lg:hidden">
+        <a class="bg-primary flex items-center justify-center rounded-sm p-2 focus:outline-hidden focus:ring-1">
+          <svg-icon src="assets/icons/logo.svg"></svg-icon>
+        </a>
+        <b class="text-foreground hidden text-sm font-bold sm:block"> Samory - Mon Aide Cyber </b>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden space-x-10 sm:order-3 md:flex">
+        <!-- <app-navbar-menu></app-navbar-menu> -->
+        @if (userType && userType === 'CYBER_HELPER'){
+        <h2 *ngIf="user && user.fullName" class="heading text-primary mt-4 mb-0">Welcome, {{ user.fullName }}! 👋</h2>
+        } @if (userType && userType === 'ORGANIZATION'){
+        <h2 *ngIf="user && user.organizationName" class="heading text-primary mt-4 mb-0">
+          {{ user.organizationName }}
+        </h2>
+        } @if (userType && userType === 'ADMIN' || 'SUPER_ADMIN'){
+        <h2 *ngIf="user && user.type === 'ADMIN'" class="heading text-primary mt-4 mb-0">Welcome, Admin! 👋</h2>
+        <h2 *ngIf="user && user.type === 'SADMIN'" class="heading text-primary mt-4 mb-0">Welcome, Super Admin! 👋</h2>
+        }
+        <app-search-bar
+          width="w-[400px]"
+          placeholder="Search diagnostics, organizations..."
+          (search)="handleSearch($event)" />
+      </div>
+
+      <!-- Profile menu -->
+      <div class="items-center justify-end sm:order-4 md:flex md:flex-1 lg:w-0">
+        <app-language-switch [isHomePage]="true"></app-language-switch>
+        <div
+          class="size-10 ml-2 flex cursor-pointer items-center justify-center rounded-full border border-[#23044833] bg-white transition-colors duration-200 hover:bg-gray-100 hover:shadow-2xl dark:border-gray-600 dark:hover:bg-gray-700">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.82422 8.01918C7.82422 8.01918 7.88653 6.59129 9.27547 5.44639C10.1002 4.76663 11.0906 4.56975 11.9781 4.55764C12.7885 4.54768 13.5128 4.68485 13.946 4.896C14.6863 5.2586 16.1319 6.14129 16.1319 8.01918C16.1319 9.99528 14.8693 10.891 13.4341 11.8779C11.9988 12.8649 11.6319 13.8328 11.6319 14.9423"
+              stroke="#230448"
+              stroke-width="1.73077"
+              stroke-miterlimit="10"
+              stroke-linecap="round" />
+            <path
+              d="M11.6307 19.6149C12.3954 19.6149 13.0153 18.995 13.0153 18.2303C13.0153 17.4656 12.3954 16.8457 11.6307 16.8457C10.866 16.8457 10.2461 17.4656 10.2461 18.2303C10.2461 18.995 10.866 19.6149 11.6307 19.6149Z"
+              fill="#230448" />
+          </svg>
+        </div>
+        <!-- <div
+          class="size-10 ml-2 flex cursor-pointer items-center justify-center rounded-full border border-[#23044833] bg-white transition-colors duration-200 hover:bg-gray-100 hover:shadow-2xl dark:border-gray-600 dark:hover:bg-gray-700">
+          <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_877_119)">
+              <path
+                d="M2.93004 14.557C2.73343 15.8437 3.61127 16.7364 4.68573 17.1813C8.80543 18.889 14.5377 18.889 18.6574 17.1813C19.7319 16.7364 20.6097 15.8428 20.4131 14.557C20.2931 13.7659 19.6959 13.1077 19.2537 12.4644C18.675 11.6114 18.6177 10.6819 18.6168 9.69236C18.6177 5.86898 15.5088 2.76929 11.6716 2.76929C7.83435 2.76929 4.72543 5.86898 4.72543 9.69236C4.72543 10.6819 4.66819 11.6124 4.0885 12.4644C3.64727 13.1077 3.05096 13.7659 2.93004 14.557Z"
+                stroke="#230448"
+                stroke-width="1.38462"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path
+                d="M7.97656 18.4614C8.39933 20.0537 9.89287 21.2307 11.6689 21.2307C13.4458 21.2307 14.9375 20.0537 15.3612 18.4614"
+                stroke="#230448"
+                stroke-width="1.38462"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+              <circle cx="17.0508" cy="6" r="5" fill="#E30000" />
+            </g>
+            <defs>
+              <clipPath id="clip0_877_119">
+                <rect width="22.1538" height="22.1538" fill="white" transform="translate(0.59375 0.923096)" />
+              </clipPath>
+            </defs>
+          </svg>
+        </div> -->
+        <app-notification-menu></app-notification-menu>
+        <div
+          class="size-10 ml-2 flex w-16 cursor-pointer items-center justify-between rounded-full border border-[#23044833] bg-white px-4 transition-colors duration-200 hover:bg-gray-100 hover:shadow-2xl dark:border-gray-600 dark:hover:bg-gray-700">
+          <span class="-ml-[27px]">
+            <app-profile-menu></app-profile-menu>
+          </span>
+          <span class="-mr-3">
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M6.90151 6.84292C6.75098 6.99341 6.54685 7.07794 6.334 7.07794C6.12114 7.07794 5.91701 6.99341 5.76648 6.84292L1.22553 2.30197C1.14886 2.22792 1.08771 2.13935 1.04564 2.04141C1.00357 1.94348 0.981425 1.83815 0.980499 1.73156C0.979573 1.62498 0.999883 1.51928 1.04024 1.42063C1.08061 1.32198 1.14021 1.23235 1.21558 1.15698C1.29095 1.08162 1.38057 1.02201 1.47922 0.98165C1.57787 0.941289 1.68357 0.920979 1.79016 0.921905C1.89674 0.922831 2.00207 0.944975 2.10001 0.987045C2.19794 1.02911 2.28652 1.09027 2.36056 1.16693L6.334 5.14037L10.3074 1.16693C10.4588 1.02071 10.6616 0.939804 10.8721 0.941633C11.0825 0.943462 11.2839 1.02788 11.4327 1.17671C11.5815 1.32554 11.6659 1.52687 11.6678 1.73734C11.6696 1.94781 11.5887 2.15058 11.4425 2.30197L6.90151 6.84292Z"
+                fill="#230448"
+                fill-opacity="0.8" />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <app-navbar-mobile></app-navbar-mobile>
+</div>

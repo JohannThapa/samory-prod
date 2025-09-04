@@ -1,0 +1,25 @@
+<section class="mx-auto mt-8 max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+  <div class="mb-12 text-center">
+    <h2 class="text-primary text-3xl font-bold md:text-[42px]">What People Are Saying</h2>
+    <p class="text-primary mt-2 text-sm font-medium tracking-normal md:text-lg">
+      Real Experiences From Organizations And Cyber Helpers Who’ve Used The Platform.
+    </p>
+  </div>
+
+  <div class="columns-1 gap-12 [column-fill:_balance] sm:columns-2 lg:columns-3">
+    <div *ngFor="let quote of quotes" class="mb-12 break-inside-avoid">
+      <app-quote-card
+        [message]="quote.message"
+        [authorName]="quote.authorName"
+        [authorTitle]="quote.authorTitle"
+        [authorAvatar]="quote.authorAvatar"></app-quote-card>
+    </div>
+  </div>
+
+  <div class="mt-12 text-center">
+    <button
+      class="text-primary border-primary w-full rounded-2xl border bg-white py-3 px-16 text-base font-bold shadow-lg transition-colors hover:bg-gray-100 sm:w-auto">
+      See All Reviews
+    </button>
+  </div>
+</section>

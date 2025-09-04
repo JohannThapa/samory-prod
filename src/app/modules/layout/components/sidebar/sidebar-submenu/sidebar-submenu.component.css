@@ -1,0 +1,5 @@
+.sub-menu-bg:hover{
+    background: linear-gradient(90deg, rgba(0, 160, 98, 0.2) 0%, #00A062 54.33%, rgba(0, 160, 98, 0.2) 100%);
+    border: 1px solid #FFFFFF33;
+    color: white;
+}

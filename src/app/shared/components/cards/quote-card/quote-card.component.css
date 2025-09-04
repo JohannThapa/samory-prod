@@ -1,0 +1,17 @@
+.card {
+    background-color: rgba(248, 244, 254, 1);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .message {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 100%;
+    color: rgba(55, 65, 81, 1);
+  }
+  

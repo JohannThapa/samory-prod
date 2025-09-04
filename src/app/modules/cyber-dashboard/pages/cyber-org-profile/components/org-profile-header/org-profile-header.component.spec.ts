@@ -1,0 +1,22 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { OrgProfileHeaderComponent } from './org-profile-header.component';
+
+describe('OrgProfileHeaderComponent', () => {
+  let component: OrgProfileHeaderComponent;
+  let fixture: ComponentFixture<OrgProfileHeaderComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [OrgProfileHeaderComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(OrgProfileHeaderComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

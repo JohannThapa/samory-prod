@@ -1,0 +1,149 @@
+<div
+  class="hero-container hero-container-white relative flex h-[50vh] min-h-[60vh] flex-col items-center justify-center overflow-hidden p-8 pt-10 text-white sm:pt-0">
+  <div class="hero-content relative z-20 mx-auto mt-24 max-w-full text-center">
+    <h1 class="text-primary mb-4 text-[48px] font-bold leading-[47px] md:text-[52px]">
+      {{ 'cgu.title' | translate }}
+    </h1>
+    <p class="text-primary mb-2 text-center text-[18px]">
+      {{ 'cgu.description' | translate }}
+    </p>
+    <p class="text-primary mb-0 text-center text-[18px]">
+      {{ 'cgu.lastUpdated' | translate }}<span class="text-success">{{ 'cgu.date' | translate }}</span>
+    </p>
+  </div>
+</div>
+
+<div class="min-h-screen">
+  <main class="cgu-container container mx-auto p-4 md:p-8">
+    <div class="mx-auto max-w-4xl rounded-3xl border border-gray-200 bg-[#F8F4FE] p-6 shadow-lg md:p-12">
+      <div class="text-primary space-y-6 md:space-y-8">
+        <div>
+          <p>
+            {{ 'cgu.intro' | translate }}
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'cgu.definitions.title' | translate }}
+          </h2>
+          <ul class="list-inside list-disc space-y-2">
+            <li>
+              <strong>{{ 'cgu.definitions.platform' | translate }}</strong>
+            </li>
+            <li>
+              <strong>{{ 'cgu.definitions.user' | translate }}</strong>
+            </li>
+            <li>
+              <strong>{{ 'cgu.definitions.cyberHelpers' | translate }}</strong>
+            </li>
+            <li>
+              <strong>{{ 'cgu.definitions.organization' | translate }}</strong>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'cgu.userObligations.title' | translate }}
+          </h2>
+          <ul class="list-inside list-disc space-y-2">
+            <li>{{ 'cgu.userObligations.accurateInfo' | translate }}</li>
+            <li>{{ 'cgu.userObligations.solelyResponsible' | translate }}</li>
+            <li>{{ 'cgu.userObligations.noIllegalActivity' | translate }}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'cgu.accountCreation.title' | translate }}
+          </h2>
+          <ul class="list-inside list-disc space-y-2">
+            <li>{{ 'cgu.accountCreation.required' | translate }}</li>
+            <li>{{ 'cgu.accountCreation.age' | translate }}</li>
+            <li>{{ 'cgu.accountCreation.responsibility' | translate }}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'cgu.serviceDescription.title' | translate }}
+          </h2>
+          <p>{{ 'cgu.serviceDescription.intro' | translate }}</p>
+          <ul class="mt-2 list-inside list-disc space-y-2">
+            <li>{{ 'cgu.serviceDescription.requestDiagnostics' | translate }}</li>
+            <li>{{ 'cgu.serviceDescription.receiveReports' | translate }}</li>
+            <li>{{ 'cgu.serviceDescription.provideAssessments' | translate }}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'cgu.confidentiality.title' | translate }}
+          </h2>
+          <p>
+            {{ 'cgu.confidentiality.intro' | translate }}
+            <a href="#" class="text-blue-600 hover:underline">{{
+              'cgu.confidentiality.privacyPolicyLink' | translate
+            }}</a
+            >.
+          </p>
+          <ul class="mt-2 list-inside list-disc space-y-2">
+            <li>{{ 'cgu.confidentiality.personalData' | translate }}</li>
+            <li>{{ 'cgu.confidentiality.cyberHelpersAccess' | translate }}</li>
+            <li>{{ 'cgu.confidentiality.dataUsage' | translate }}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'cgu.intellectualProperty.title' | translate }}
+          </h2>
+          <p>
+            {{ 'cgu.intellectualProperty.intro' | translate }}
+          </p>
+          <ul class="mt-2 list-inside list-disc space-y-2">
+            <li>{{ 'cgu.intellectualProperty.copyDisclaimer' | translate }}</li>
+            <li>{{ 'cgu.intellectualProperty.modifyPermission' | translate }}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'cgu.limitationOfLiability.title' | translate }}
+          </h2>
+          <ul class="list-inside list-disc space-y-2">
+            <li>{{ 'cgu.limitationOfLiability.misuseDisclaimer' | translate }}</li>
+            <li>{{ 'cgu.limitationOfLiability.diagnosticDisclaimer' | translate }}</li>
+            <li>{{ 'cgu.limitationOfLiability.guaranteeDisclaimer' | translate }}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'cgu.accountTermination.title' | translate }}
+          </h2>
+          <p>{{ 'cgu.accountTermination.intro' | translate }}</p>
+          <ul class="mt-2 list-inside list-disc space-y-2">
+            <li>{{ 'cgu.accountTermination.violatesTerms' | translate }}</li>
+            <li>{{ 'cgu.accountTermination.maliciousActivity' | translate }}</li>
+            <li>{{ 'cgu.accountTermination.disruptsFunction' | translate }}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'cgu.governingLaw.title' | translate }}
+          </h2>
+          <p>
+            {{ 'cgu.governingLaw.intro' | translate }}<strong>{{ 'cgu.governingLaw.country' | translate }}</strong
+            >.
+          </p>
+          <p>{{ 'cgu.governingLaw.jurisdiction' | translate }}</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<app-subs-container></app-subs-container>

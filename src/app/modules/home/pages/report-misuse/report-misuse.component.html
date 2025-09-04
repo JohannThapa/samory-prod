@@ -1,0 +1,101 @@
+<div class="relative z-10 mx-auto mt-28 w-full max-w-7xl px-4 py-16 text-center">
+  <div class="hero-content mx-auto max-w-[800px] text-center">
+    <h1 class="text-primary mb-5 text-[52px] font-bold leading-[47px]">
+      {{ 'report.title' | translate }}
+    </h1>
+    <p class="description text-primary mx-auto mb-8 max-w-2xl text-base leading-snug md:text-[18px]">
+      {{ 'report.subtitle' | translate }}
+    </p>
+  </div>
+
+  <ng-container *ngIf="!submissionSuccess">
+    <div class="mx-auto w-full max-w-5xl rounded-2xl bg-[#F8F4FE] p-6 shadow-lg md:p-12">
+      <p class="text-success mb-8 text-left text-[22px] font-semibold">
+        {{ 'report.confidentiality' | translate }}
+      </p>
+
+      <form [formGroup]="reportForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <div class="form-field-container">
+          <label class="form-label">{{ 'report.form.reporterEmailLabel' | translate }}</label>
+          <input
+            type="email"
+            formControlName="reporterEmail"
+            placeholder="{{ 'report.form.reporterEmailPlaceholder' | translate }}"
+            class="form-input" />
+          <p *ngIf="f['reporterEmail'].touched && f['reporterEmail'].invalid" class="text-left text-sm text-red-500">
+            {{ 'report.form.reporterEmailError' | translate }}
+          </p>
+        </div>
+
+        <div class="form-field-container">
+          <label class="form-label">{{ 'report.form.reportedEmailLabel' | translate }} *</label>
+          <input
+            type="email"
+            formControlName="reportedEmail"
+            placeholder="{{ 'report.form.reportedEmailPlaceholder' | translate }}"
+            class="form-input" />
+          <p *ngIf="f['reportedEmail'].touched && f['reportedEmail'].invalid" class="text-left text-sm text-red-500">
+            {{ 'report.form.reportedEmailError' | translate }}
+          </p>
+        </div>
+
+        <div class="form-field-container">
+          <label class="form-label">{{ 'report.form.misuseTypeLabel' | translate }} *</label>
+          <select formControlName="misuseType" class="form-input">
+            <option value="" disabled selected>{{ 'report.form.misuseTypePlaceholder' | translate }}</option>
+            <option *ngFor="let type of misuseTypes" [value]="type">{{ type }}</option>
+          </select>
+          <p *ngIf="f['misuseType'].touched && f['misuseType'].invalid" class="text-left text-sm text-red-500">
+            {{ 'report.form.misuseTypeError' | translate }}
+          </p>
+        </div>
+
+        <div class="form-field-container">
+          <label class="form-label">{{ 'report.form.descriptionLabel' | translate }} *</label>
+          <textarea
+            rows="5"
+            formControlName="description"
+            placeholder="{{ 'report.form.descriptionPlaceholder' | translate }}"
+            class="form-textarea"></textarea>
+          <p *ngIf="f['description'].touched && f['description'].invalid" class="text-left text-sm text-red-500">
+            {{ 'report.form.descriptionError' | translate }}
+          </p>
+        </div>
+
+        <div *ngIf="submissionError" class="text-center text-red-500">{{ submissionError }}</div>
+
+        <button
+          type="submit"
+          class="bg-primary w-full rounded-xl p-4 font-semibold text-white hover:bg-purple-800"
+          [disabled]="reportForm.invalid || isLoading">
+          <ng-container *ngIf="!isLoading">{{ 'report.form.submitButton' | translate }}</ng-container>
+          <ng-container *ngIf="isLoading">{{ 'report.form.submittingButton' | translate }}</ng-container>
+        </button>
+      </form>
+    </div>
+  </ng-container>
+
+  <div *ngIf="submissionSuccess" class="mx-auto w-full max-w-3xl rounded-2xl border-gray-500 bg-gray-200 shadow-2xl">
+    <div class="border-success w-full rounded-2xl p-12 text-center shadow">
+      <svg-icon src="assets/icons/internal/success.svg" [svgClass]="'h-[95px] w-[95px] mx-auto mb-8'"> </svg-icon>
+      <h2 class="mb-6 text-2xl font-bold text-gray-800 md:text-[42px]">
+        {{ 'report.success.title' | translate }}
+      </h2>
+      <p class="text-primary mb-12 text-sm md:text-[18px]">
+        {{ 'report.success.subtitle' | translate }}
+      </p>
+      <div class="flex flex-col space-y-4 px-8 md:flex-row md:space-x-4 md:space-y-0 md:px-28">
+        <button
+          [routerLink]="['/']"
+          class="text-primary w-full cursor-pointer rounded-lg bg-yellow-400 p-3 text-base font-semibold hover:bg-yellow-500 focus:outline-none focus:ring focus:ring-yellow-300">
+          {{ 'report.success.homeButton' | translate }}
+        </button>
+        <button
+          [routerLink]="['/help']"
+          class="border-primary text-primary w-full cursor-pointer rounded-lg border bg-transparent p-3 font-semibold hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-200">
+          {{ 'report.success.helpButton' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

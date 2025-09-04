@@ -1,0 +1,14 @@
+<!-- <div class="author-container">
+  <img [src]="avatarUrl" alt="{{ name }}" class="avatar" />
+  <div class="author-details">
+    <div class="author-name">{{ name }}</div>
+    <div class="author-title">{{ title }}</div>
+  </div>
+</div> -->
+<div class="flex items-center gap-3">
+  <img [src]="avatarUrl" [alt]="name" class="h-10 w-10 rounded-full object-cover" />
+  <div class="flex flex-col">
+    <div class="font-['Public_Sans'] text-base font-semibold text-zinc-900 md:text-xl">{{ name }}</div>
+    <div class="font-['Public_Sans'] text-sm font-normal text-gray-400">{{ title }}</div>
+  </div>
+</div>

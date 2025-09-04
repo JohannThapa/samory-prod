@@ -1,0 +1,26 @@
+<div class="mx-8 rounded-3xl bg-[#F8F4FE] p-6 shadow-md md:p-10">
+  <div *ngFor="let cat of categories" class="mb-8 border-b border-dashed border-[#23044880] last:border-b-0">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-12">
+      <div class="col-span-1 md:pr-10">
+        <h2 class="text-success text-xl font-semibold md:text-[20px]">{{ cat.title }}</h2>
+      </div>
+      <div class="col-span-1">
+        <div *ngFor="let q of cat.items" class="border-b border-dashed border-[#23044880] last:border-b-0">
+          <button (click)="toggle(q.question)" class="flex w-full items-start justify-between py-4 text-left">
+            <span class="text-primary pr-4 text-[16px] font-medium md:text-lg">
+              {{ q.question }}
+            </span>
+            <span class="text-primary text-[24px]">
+              {{ openedQuestion === q.question ? '−' : '+' }}
+            </span>
+          </button>
+          <div *ngIf="openedQuestion === q.question" class="pb-4">
+            <p class="text-primary text-base font-[400] leading-6">
+              {{ q.answer }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

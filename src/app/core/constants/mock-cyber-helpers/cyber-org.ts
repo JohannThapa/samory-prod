@@ -1,0 +1,68 @@
+import { Organization } from 'src/app/modules/cyber-dashboard/pages/cyber-organization/models/cyber-org.model';
+
+export const MOCK_CYBER_ORGANIZATIONS: Organization[] = [
+  {
+    id: 1,
+    name: 'DigitalSafe Conakry',
+    type: 'SME',
+    city: 'Kindia',
+    website: 'www.digitalsafe.gn',
+    avatar: './assets/avatars/avt-01.jpg',
+  },
+  {
+    id: 2,
+    name: 'Guinée Numérique',
+    type: 'NGO',
+    city: 'Conakry',
+    website: 'www.guineenum.gn',
+    avatar: './assets/images/img-02.jpg',
+  },
+  {
+    id: 3,
+    name: 'Tech Solutions Guinea',
+    type: 'Enterprise',
+    city: 'Mamou',
+    website: 'www.techsolutions.gn',
+    avatar: './assets/images/img-03.jpg',
+  },
+  {
+    id: 4,
+    name: 'Sante Plus',
+    type: 'SME',
+    city: 'Kindia',
+    website: 'www.santeplus.gn',
+    avatar: 'https://i.pravatar.cc/64?img=19',
+  },
+  {
+    id: 5,
+    name: 'DigitalSafe Conakry',
+    type: 'SME',
+    city: 'Kindia',
+    website: 'www.digitalsafe.gn',
+    avatar: 'https://i.pravatar.cc/64?img=20',
+  },
+  {
+    id: 6,
+    name: 'Guinée Numérique',
+    type: 'NGO',
+    city: 'Conakry',
+    website: 'www.guineenum.gn',
+    avatar: 'https://i.pravatar.cc/64?img=19',
+  },
+  {
+    id: 7,
+    name: 'Tech Solutions Guinea',
+    type: 'Enterprise',
+    city: 'Mamou',
+    website: 'www.techsolutions.gn',
+    avatar: 'https://i.pravatar.cc/64?img=19',
+  },
+  {
+    id: 8,
+    name: 'Sante Plus',
+    type: 'SME',
+    city: 'Kindia',
+    website: 'www.santeplus.gn',
+    avatar: 'https://i.pravatar.cc/64?img=19',
+  },
+];

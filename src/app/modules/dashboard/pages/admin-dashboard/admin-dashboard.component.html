@@ -1,0 +1,61 @@
+<div>
+  <div class="min-h-screen p-2 font-sans">
+    <div class="mb-8 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
+      <app-stats-card
+        label="Total Users"
+        [value]="2350"
+        [percentage]="12.5"
+        [isPositive]="true"
+        icon="users"></app-stats-card>
+      <app-stats-card
+        label="Registered Organizations"
+        [value]="125"
+        [percentage]="3"
+        [isPositive]="true"
+        icon="orgs"></app-stats-card>
+      <app-stats-card
+        label="Active Cyber Helpers"
+        [value]="102"
+        [percentage]="5.2"
+        [isPositive]="false"
+        icon="cyber"></app-stats-card>
+      <app-stats-card
+        label="Reports Completed"
+        [value]="87"
+        [percentage]="3"
+        [isPositive]="true"
+        icon="reports"></app-stats-card>
+    </div>
+
+    <div class="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div class="lg:col-span-2">
+        <div class="p-0">
+          <app-area-chart
+            [chartData]="areaChartData()"
+            [chartTitle]="'User Growth Over Time'"
+            [xAxisLabel]="'Months'"
+            [showXAxisLabel]="false"
+            [filterOptions]="filterOptions"
+            [width]="670"
+            [height]="390">
+          </app-area-chart>
+        </div>
+        <div class="my-4">
+          <app-recent-activities></app-recent-activities>
+        </div>
+      </div>
+      <div>
+        <app-pie-chart
+          [chartData]="pieChartData()"
+          [chartTitle]="'User Type Distribution'"
+          [colorScheme]="{ domain: ['#22C55E', '#ED6358', '#FFD423'] }"
+          [width]="250"
+          [height]="250">
+        </app-pie-chart>
+        <div class="min-h-auto my-4 flex items-center justify-center bg-gray-100 p-2">
+          <app-region-activity [regions]="mockRegions"></app-region-activity>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

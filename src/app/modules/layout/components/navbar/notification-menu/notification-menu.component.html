@@ -1,0 +1,112 @@
+<div class="relative ml-3">
+  <div
+    (click)="toggleMenu()"
+    class="size-10 relative ml-2 flex cursor-pointer items-center justify-center rounded-full border border-[#23044833] bg-white transition-colors duration-200 hover:bg-gray-100 hover:shadow-2xl dark:border-gray-600 dark:hover:bg-gray-700">
+    <svg
+      clickOutside
+      (clickOutside)="isOpen = false"
+      width="23"
+      height="24"
+      viewBox="0 0 23 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_877_119)">
+        <path
+          d="M2.93004 14.557C2.73343 15.8437 3.61127 16.7364 4.68573 17.1813C8.80543 18.889 14.5377 18.889 18.6574 17.1813C19.7319 16.7364 20.6097 15.8428 20.4131 14.557C20.2931 13.7659 19.6959 13.1077 19.2537 12.4644C18.675 11.6114 18.6177 10.6819 18.6168 9.69236C18.6177 5.86898 15.5088 2.76929 11.6716 2.76929C7.83435 2.76929 4.72543 5.86898 4.72543 9.69236C4.72543 10.6819 4.66819 11.6124 4.0885 12.4644C3.64727 13.1077 3.05096 13.7659 2.93004 14.557Z"
+          stroke="#230448"
+          stroke-width="1.38462"
+          stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path
+          d="M7.97656 18.4614C8.39933 20.0537 9.89287 21.2307 11.6689 21.2307C13.4458 21.2307 14.9375 20.0537 15.3612 18.4614"
+          stroke="#230448"
+          stroke-width="1.38462"
+          stroke-linecap="round"
+          stroke-linejoin="round" />
+        <circle *ngIf="unseenCount() > 0" cx="17.0508" cy="6" r="5" fill="#E30000" />
+      </g>
+      <defs>
+        <clippath id="clip0_877_119">
+          <rect width="22.1538" height="22.1538" fill="white" transform="translate(0.59375 0.923096)" />
+        </clippath>
+      </defs>
+    </svg>
+  </div>
+  <div
+    [@openClose]="isOpen ? 'open' : 'closed'"
+    class="bg-background shadow-custom border-muted absolute z-20 mt-2 w-80 origin-top-right transform rounded-md border border-dashed py-4 ring-1 ring-transparent ring-opacity-5 transition focus:outline-hidden ltr:right-0 rtl:left-0">
+    <div class="flext-row flex items-center px-4 pb-0">
+      <div class="text-foreground overflow-hidden px-2 text-sm font-semibold">Notifications</div>
+      <div class="bg-primary ml-auto rounded-full px-2 py-0.5 text-xs font-medium text-white">
+        {{ unseenCount() }} unseen
+      </div>
+    </div>
+    <div class="border-border border-b border-dashed"></div>
+
+    <div class="right-0 h-[60vh] w-full overflow-y-auto bg-gray-50 p-2">
+      <div *ngIf="isLoading()">
+        <p class="p-4 text-center text-gray-500">Loading notifications...</p>
+      </div>
+      <div *ngIf="!isLoading() && groupedNotifications().length === 0">
+        <p class="p-4 text-center text-gray-500">You have no new notifications.</p>
+      </div>
+
+      <ng-container *ngIf="!isLoading()">
+        <ng-container *ngFor="let group of groupedNotifications()">
+          <h2 class="border-b border-gray-300 pt-2 pb-2 text-xs leading-normal text-gray-600 focus:outline-none">
+            {{ group.label }}
+          </h2>
+          <div
+            *ngFor="let item of group.items"
+            class="relative mt-1 flex w-full cursor-pointer items-start rounded p-3"
+            [ngClass]="{
+              'shadow-xs bg-white': item.seen,
+              'bg-indigo-100 shadow-md': !item.seen
+            }">
+            <div
+              tabindex="0"
+              aria-label="notification icon"
+              role="img"
+              class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full focus:outline-none"
+              [ngClass]="item.iconBgClass">
+              <svg-icon [src]="item.icon" [svgClass]="'w-6 h-6'"></svg-icon>
+            </div>
+
+            <div class="w-full pl-3">
+              <p tabindex="0" class="text-primary text-sm leading-none focus:outline-none">
+                <span class="font-semibold">{{ item.title }}</span>
+              </p>
+              <p tabindex="0" class="mt-1 pt-1 text-xs leading-3 text-gray-600 focus:outline-none">
+                {{ item.message }}
+              </p>
+              <div class="mt-2 flex items-center justify-between">
+                <p tabindex="0" class="pt-1 text-xs leading-3 text-gray-500 focus:outline-none">
+                  {{ item.displayTime }}
+                </p>
+                <button
+                  *ngIf="!item.seen"
+                  (click)="markAsSeen(item.id); $event.stopPropagation()"
+                  class="text-primary cursor-pointer rounded-3xl px-2 py-1 text-xs font-medium shadow-2xl hover:underline focus:outline-none">
+                  Mark as read
+                </button>
+              </div>
+            </div>
+
+            <button
+              (click)="deleteNotification(item.id); $event.stopPropagation()"
+              class="absolute top-2 right-2 p-1 text-gray-400 hover:text-gray-600 focus:outline-none">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>

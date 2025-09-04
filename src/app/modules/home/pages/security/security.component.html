@@ -1,0 +1,72 @@
+<div
+  class="hero-container hero-container-white relative flex h-[90vh] min-h-[500px] flex-col items-center justify-center overflow-hidden p-8 pt-10 text-white sm:pt-0">
+  <div class="hero-content relative z-20 mx-auto mt-24 max-w-[800px] text-center">
+    <h1 class="text-primary mb-4 text-[48px] font-bold leading-[47px] md:text-5xl">
+      Security and privacy at <span class="text-success">SAMORY </span>
+    </h1>
+    <p class="description text-primary mx-auto mb-8 max-w-2xl text-base leading-snug md:text-[22px]">
+      At Samory Mon Aide Cyber, your security and privacy are our top priorities. We implement strict technical,
+      organizational, and human safeguards to ensure the confidentiality, integrity, and availability of your data.
+    </p>
+  </div>
+</div>
+
+<div class="bg-primary pt-18">
+  <app-section-card
+    title="Governance"
+    [subtitle]="
+      'We have established clear processes and policies to guide how security is managed across the platform:'
+    ">
+    <div class="grid grid-cols-1 gap-10 border-b border-[#FFFFFF66] pb-4 md:grid-cols-2 lg:grid-cols-4">
+      <app-governance-feature-card
+        *ngFor="let g of governance"
+        [iconSrc]="g.iconSrc"
+        [title]="g.title"
+        [description]="g.description">
+      </app-governance-feature-card>
+    </div>
+  </app-section-card>
+</div>
+
+<div class="bg-primary pt-18">
+  <app-section-card
+    title="Protection"
+    subtitle="We implement strong security mechanisms to protect your data and communications.">
+    <app-multi-col-container [features]="protectionItems"></app-multi-col-container>
+  </app-section-card>
+</div>
+
+<div class="bg-primary pt-18 pb-16">
+  <app-section-card
+    title="Defense"
+    subtitle="We are fully prepared to detect, respond to, and recover from cybersecurity threats quickly and effectively.">
+    <app-multi-col-container [features]="defenseItems"></app-multi-col-container>
+  </app-section-card>
+</div>
+<section class="w-full bg-white">
+  <div class="mx-auto max-w-[1160px] px-4 py-16">
+    <h2 class="text-primary text-center text-[28px] font-bold md:text-[42px]">Access and Confidentiality</h2>
+    <p class="text-primary mt-2 mb-16 text-center text-base md:text-[18px]">
+      We apply strict internal access control policies to ensure that only the right people access the right data — and
+      nothing more.
+    </p>
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      @for (card of accessCards; track card.title) {
+      <app-access-conf-card [iconSrc]="card.iconSrc" [title]="card.title" [description]="card.description" />
+      }
+    </div>
+    <div class="mt-16 text-center">
+      <h3 class="text-primary text-[20px] font-semibold md:text-[42px]">
+        Need help or want to report a security issue?
+      </h3>
+      <p class="text-primary] mt-2 text-[14px] md:text-[18px]">Contact our team at:</p>
+      <a
+        href="mailto:security@samorycyber.gn"
+        class="text-success decoration-success/80 hover:decoration-primary mt-2 inline-block text-[28px] font-semibold underline">
+        security@samorycyber.gn
+      </a>
+    </div>
+  </div>
+</section>
+<app-subs-container></app-subs-container>

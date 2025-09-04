@@ -1,0 +1,13 @@
+<div class="container mx-auto px-4 md:px-8">
+  <app-simple-tab [tabs]="tabs" [activeTab]="activeTab" (tabChange)="activeTab = $event"></app-simple-tab>
+
+  <div class="mt-8 space-y-12">
+    @switch (activeTab) { @case ('overview') {
+    <app-overview></app-overview>
+    } @case ('impact') {
+    <app-impact></app-impact>
+    } @case ('resources') {
+    <app-resouces></app-resouces>
+    } }
+  </div>
+</div>

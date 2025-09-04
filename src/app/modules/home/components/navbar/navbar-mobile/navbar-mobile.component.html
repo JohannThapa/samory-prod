@@ -1,0 +1,64 @@
+<div
+  [ngClass]="menuService.showMobileMenu ? 'translate-x-0' : '-translate-x-full'"
+  class="fixed inset-y-0 left-0 z-50 w-64 transform bg-gray-900 bg-opacity-90 p-6 transition-transform duration-300 ease-in-out md:hidden">
+  <div class="flex justify-end">
+    <button (click)="menuService.showMobileMenu = false" class="text-white focus:outline-none">
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="my-4 text-center">
+    <span class="text-2xl font-bold text-white">Logo</span>
+  </div>
+
+  <nav class="space-y-2">
+    @for (menu of menuService.pagesMenu; track menu.label) { @if (!menu.children) {
+    <a
+      [routerLink]="menu.route"
+      routerLinkActive="bg-white text-gray-900"
+      class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+      (click)="menuService.showMobileMenu = false">
+      {{ menu.label }}
+    </a>
+    } @else {
+    <div>
+      <button
+        (click)="menu.expanded = !menu.expanded"
+        class="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+        <span>{{ menu.label }}</span>
+        <svg
+          [ngClass]="{ 'rotate-180': menu.expanded }"
+          class="h-5 w-5 transform transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+      @if (menu.expanded) {
+      <div class="mt-2 space-y-1 pl-4">
+        @for (child of menu.children; track child.label) {
+        <a
+          [routerLink]="child.route"
+          routerLinkActive="bg-white text-gray-900"
+          class="block rounded-md px-3 py-2 text-sm font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+          (click)="menuService.showMobileMenu = false">
+          {{ child.label }}
+        </a>
+        }
+      </div>
+      }
+    </div>
+    } }
+  </nav>
+
+  <div class="mt-8">
+    <button class="w-full rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-purple-800">Login/Signup</button>
+    <button class="mt-3 w-full rounded-full border border-white px-5 py-2.5 text-sm font-semibold text-white">
+      Request Free Diagnostic
+    </button>
+  </div>
+</div>

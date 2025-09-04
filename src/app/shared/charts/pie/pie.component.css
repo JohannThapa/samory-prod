@@ -1,0 +1,8 @@
+.chart-container{
+    border: 1px solid #23044833;
+    border-radius: 20px;
+    background: white;
+  }
+  :host ::ng-deep .legend-label {
+    display: none;
+  }

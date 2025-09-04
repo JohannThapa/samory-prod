@@ -1,0 +1,83 @@
+:host {
+    display: block;
+}
+.hero-container{
+    background-color: white !important;
+}
+
+.bg-pattern-right {
+    position: absolute;
+    top: 40%;
+    left: 90%;
+    width: 150px;
+    height: 160px;
+    background-image: url('../../../../../assets/illustrations/rcookie.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: 2;
+}
+
+.hero-container::before {
+    content: '';
+    position: absolute;
+    opacity: 0.9;
+    bottom: 0%;
+    left: 0%;
+    width: 250px;
+    height: 208px;
+    background-image: url('../../../../../assets/illustrations/lcookie.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.highlight-text {
+    color: #FFC900;
+}
+
+.description {
+    font-size: 18px !important;
+    line-height: 1.5;
+    padding: 0 20px;
+    margin-bottom: 2rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+@media (max-width: 768px) {
+    .hero-container {
+        min-height: 500px;
+    }
+
+    .hero-container::before {
+        top: 15%;
+        left: 5%;
+        width: 90%;
+        height: 50%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .description {
+        font-size: 1rem;
+        padding: 0;
+    }
+
+}

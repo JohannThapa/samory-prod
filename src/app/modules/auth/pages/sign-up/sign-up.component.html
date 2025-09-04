@@ -1,0 +1,330 @@
+<div class="flex min-h-screen items-center justify-center p-2 md:p-8">
+  <div class="relative z-10 mx-auto -ml-[10%] w-[950px] max-w-6xl">
+    <div
+      class="lg:p-18 relative flex items-center justify-start overflow-hidden rounded-3xl border border-[#00A062] bg-[#F8F4FE] p-8 text-left text-gray-900 shadow-2xl md:p-12">
+      <div class="flex w-full max-w-full flex-col items-start justify-start">
+        <h1 class="text-primary mb-6 text-3xl font-bold leading-tight tracking-wide md:text-4xl">
+          Create Your <br />Cyber Helper <br />Account
+        </h1>
+        <p class="text-primary mb-8 max-w-md text-lg">
+          Join a national movement to protect organizations from cyber threats.
+        </p>
+        <ul class="text-primary mb-20 space-y-4 pr-[30%]">
+          <li class="flex items-start text-base">
+            <svg
+              class="text-success mr-3 h-6 w-6 flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            Help NGOs, SMEs, and local governments strengthen their cybersecurity
+          </li>
+          <li class="flex items-start">
+            <svg
+              class="text-success mr-3 h-6 w-6 flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            Gain real-world experience with practical diagnostics
+          </li>
+          <li class="flex items-start">
+            <svg
+              class="text-success mr-3 h-6 w-6 flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            Get visibility as a trusted cybersecurity contributor
+          </li>
+        </ul>
+        <div class="text-primary mt-12 mb-20">
+          <p class="mb-2 font-bold">Need more info?</p>
+          <a href="#" class="text-success font-bold underline hover:underline"> Read the Cyber Helper Charter </a>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="absolute top-20 -right-10 z-20 w-full max-w-[580px] translate-x-1/4 translate-y-1/4 transform rounded-3xl border-2 border-[#00A062] bg-[#F8F4FE] p-4 shadow-xl md:p-8 lg:top-1/2 lg:-translate-y-1/2 lg:p-12">
+      @if (isRegistered()) {
+      <div class="flex h-full flex-col items-center justify-center p-8 text-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-16 text-success">
+          <path
+            fill-rule="evenodd"
+            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+            clip-rule="evenodd" />
+        </svg>
+        <h2 class="text-success mt-4 text-3xl font-bold">Registration Successful!</h2>
+        <p class="mt-2 text-lg">
+          Please check your email to confirm your account and complete the registration process.
+        </p>
+      </div>
+      } @else {
+      <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-6">
+        <div>
+          <label for="fullName" class="mb-1 block text-sm font-medium text-gray-700">Full Name *</label>
+          <input
+            id="fullName"
+            type="text"
+            formControlName="fullName"
+            placeholder="e.g. Fatoumata Keita"
+            class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            [ngClass]="{ 'border-red-500': submitted && f['fullName'].errors }" />
+          @if (submitted && f['fullName'].errors) {
+          <div class="mt-1 text-sm text-red-500">
+            @if (f['fullName'].errors['required']) {
+            <span>Full Name is required.</span>
+            } @if (f['fullName'].errors['minlength']) {
+            <span>Full Name must be at least 3 characters.</span>
+            }
+          </div>
+          }
+        </div>
+
+        <div>
+          <label for="email" class="mb-1 block text-sm font-medium text-gray-700">Email Address *</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="e.g. your.email@example.com"
+            class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            [ngClass]="{ 'border-red-500': submitted && f['email'].errors }" />
+          @if (submitted && f['email'].errors) {
+          <div class="mt-1 text-sm text-red-500">
+            @if (f['email'].errors['required']) {
+            <span>Email is required.</span>
+            } @if (f['email'].errors['email']) {
+            <span>Email is invalid.</span>
+            }
+          </div>
+          }
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div>
+            <label for="phone" class="mb-1 block text-sm font-medium text-gray-700">Phone Number</label>
+            <input
+              id="phone"
+              type="tel"
+              formControlName="phone"
+              placeholder="e.g. +224620000000"
+              class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              [ngClass]="{ 'border-red-500': submitted && f['phone'].errors }" />
+            @if (submitted && f['phone'].errors) {
+            <div class="mt-1 text-sm text-red-500">
+              @if (f['phone'].errors['pattern']) {
+              <span>Phone number must be between 8 and 15 digits.</span>
+              } @if (f['phone'].errors['apiError']) {
+              <span>{{ f['phone'].errors['apiError'] }}</span>
+              }
+            </div>
+            }
+          </div>
+          <div>
+            <label for="address" class="mb-1 block text-sm font-medium text-gray-700">Address</label>
+            <input
+              id="address"
+              type="text"
+              formControlName="address"
+              placeholder="e.g. Conakry, Guinea"
+              class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+          </div>
+        </div>
+        @if (isOrg() || isRoot() || isSuper() || isAdmin()) {
+        <div>
+          <label for="organizationName" class="mb-1 block text-sm font-medium text-gray-700">Organization Name</label>
+          <input
+            id="organizationName"
+            type="text"
+            formControlName="organizationName"
+            placeholder="e.g. Cyber Shield Guinea"
+            class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            [ngClass]="{ 'border-red-500': submitted && f['organizationName'].errors }" />
+          @if (submitted && f['organizationName'].errors) {
+          <div class="mt-1 text-sm text-red-500">
+            @if (f['organizationName'].errors['required']) {
+            <span>Organization name is required.</span>
+            }
+          </div>
+          }
+        </div>
+        } @if (isRoot()) {
+        <div>
+          <label for="rootKey" class="mb-1 block text-sm font-medium text-gray-700">Root Key</label>
+          <input
+            id="rootKey"
+            type="text"
+            formControlName="rootKey"
+            placeholder=""
+            class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            [ngClass]="{ 'border-red-500': submitted && f['rootKey'].errors }" />
+          @if (submitted && f['rootKey'].errors) {
+          <div class="mt-1 text-sm text-red-500">
+            @if (f['rootKey'].errors['required']) {
+            <span>Root key is required.</span>
+            }
+          </div>
+          }
+        </div>
+        }
+
+        <div>
+          <label for="password" class="mb-1 block text-sm font-medium text-gray-700">Password *</label>
+          <div class="relative">
+            <input
+              id="password"
+              [type]="passwordVisible ? 'text' : 'password'"
+              formControlName="password"
+              placeholder="Enter Your Password"
+              class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              [ngClass]="{ 'border-red-500': submitted && f['password'].errors }" />
+            <button
+              type="button"
+              (click)="togglePassword()"
+              class="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500 hover:text-gray-700">
+              @if (passwordVisible) {
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                <path
+                  fill-rule="evenodd"
+                  d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z"
+                  clip-rule="evenodd" />
+              </svg>
+              } @else {
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                <path
+                  d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z" />
+                <path
+                  d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z" />
+                <path
+                  d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
+              </svg>
+              }
+            </button>
+          </div>
+          <div class="grid grid-cols-4 gap-2 py-1">
+            <div
+              class="h-1 rounded-full"
+              [ngClass]="{
+                'bg-green-500': hasMinLength(),
+                'bg-gray-300': !hasMinLength()
+              }"></div>
+            <div
+              class="h-1 rounded-full"
+              [ngClass]="{
+                'bg-green-500': hasUpperCase(),
+                'bg-gray-300': !hasUpperCase()
+              }"></div>
+            <div
+              class="h-1 rounded-full"
+              [ngClass]="{
+                'bg-green-500': hasNumber(),
+                'bg-gray-300': !hasNumber()
+              }"></div>
+            <div
+              class="h-1 rounded-full"
+              [ngClass]="{
+                'bg-green-500': hasSpecialChar(),
+                'bg-gray-300': !hasSpecialChar()
+              }"></div>
+          </div>
+          <span class="text-xs text-gray-500">
+            Password must be at least 8 characters and include a mix of uppercase, lowercase, numbers, and symbols.
+          </span>
+          @if (submitted && f['password'].errors) {
+          <div class="mt-1 text-sm text-red-500">
+            @if (f['password'].errors['required']) {
+            <span>Password is required.</span>
+            } @if (f['password'].errors['passwordStrength']) {
+            <span>Password is not strong enough.</span>
+            } @if (f['password'].errors['apiError']) {
+            <span>{{ f['password'].errors['apiError'] }}</span>
+            }
+          </div>
+          }
+        </div>
+
+        @if (isPasswordStrong()) {
+        <div>
+          <label for="confirmPassword" class="mb-1 block text-sm font-medium text-gray-700">Confirm Password *</label>
+          <input
+            id="confirmPassword"
+            type="password"
+            formControlName="confirmPassword"
+            placeholder="Re-enter Your Password"
+            class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            [ngClass]="{
+              'border-red-500': submitted && f['confirmPassword'].errors
+            }" />
+          @if (submitted && f['confirmPassword'].errors) {
+          <div class="mt-1 text-sm text-red-500">
+            @if (f['confirmPassword'].errors['required']) {
+            <span>Confirm Password is required.</span>
+            } @if (f['confirmPassword'].errors['passwordMismatch']) {
+            <span>Passwords do not match.</span>
+            }
+          </div>
+          }
+        </div>
+        }
+
+        <div class="flex items-center space-x-2">
+          <input id="terms" type="checkbox" [formControl]="terms" class="form-checkbox text-primary h-4 w-4 rounded" />
+          <label for="terms" class="text-sm text-gray-700">
+            I agree to the
+            <a href="#" class="text-primary hover:underline">Terms & Conditions</a> and
+            <a href="#" class="text-primary hover:underline">Cyber Helper Charter</a>.
+          </label>
+        </div>
+        @if (submitted && terms.errors) {
+        <div class="mt-1 text-sm text-red-500">
+          @if (terms.errors['requiredTrue']) {
+          <span>You must agree to the terms.</span>
+          }
+        </div>
+        }
+
+        <button
+          type="submit"
+          [disabled]="form.invalid || terms.invalid"
+          class="bg-primary w-full cursor-pointer rounded-xl py-3 font-semibold text-white transition-colors duration-200 hover:bg-purple-900">
+          @if (!loading()) {
+          <span>Create account</span>
+          } @else {
+          <span>Creating…</span>
+          }
+        </button>
+
+        @if (errorMsg()) {
+        <p class="text-sm text-red-600">{{ errorMsg() }}</p>
+        }
+
+        <div class="text-primary mt-4 text-center">
+          Already have an account?
+          <a routerLink="/auth/sign-in" class="text-success font-bold hover:underline">Log In</a>
+        </div>
+      </form>
+      }
+    </div>
+  </div>
+</div>

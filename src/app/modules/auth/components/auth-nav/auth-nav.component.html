@@ -1,0 +1,24 @@
+<header class="z-50 flex items-center justify-between px-6 py-0">
+  <div class="flex items-center gap-3">
+    <img src="assets/logos/logo-transparent.png" alt="Logo" class="w-34 h-auto" />
+  </div>
+  <div class="-mt-16 flex items-center gap-3">
+    <div class="flex items-center gap-2">
+      <app-language-switch [isHomePage]="false"></app-language-switch>
+      <!--     
+        <button class="rounded-full bg-white text-sm px-3 py-1 font-semibold">EN</button>
+        <button class="text-white text-sm font-semibold">FR</button> -->
+    </div>
+
+    <button
+      class="bg-primary-2 z-50 cursor-pointer rounded-full border border-[#230448]/10 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
+      routerLink="/auth/sign-in">
+      {{ 'NAV_LOGIN_SIGNUP' | translate }}
+    </button>
+
+    <button
+      class="text-primary border-primary z-50 cursor-pointer rounded-full border bg-white px-5 py-2.5 text-sm font-semibold transition-colors duration-200">
+      {{ 'NAV_REQUEST_DIAGNOSTIC' | translate }}
+    </button>
+  </div>
+</header>

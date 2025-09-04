@@ -1,0 +1,25 @@
+
+:host { display: contents; }
+.i { font-weight: 700; }
+/* Hide scrollbar in messages for a cleaner look (still scrollable) */
+section .grow::-webkit-scrollbar { width: 8px; }
+section .grow::-webkit-scrollbar-thumb { background: rgba(0,0,0,.12); border-radius: 9999px; }
+
+input {
+    background-color: #F8F4FE !important;
+    border: none !important;
+}   
+
+textarea {
+    border: none !important;
+    outline: none !important
+}  
+textarea:active{
+    border: none !important;
+}
+.chat-gradient{
+    background: linear-gradient(180deg, #00A062 0%, rgba(0, 160, 98, 0) 100%) !important;
+}
+button{
+    cursor: pointer;
+}

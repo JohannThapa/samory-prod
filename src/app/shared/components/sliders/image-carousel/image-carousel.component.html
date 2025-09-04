@@ -1,0 +1,7 @@
+<swiper-container #swiperContainer class="h-40 w-full max-w-full">
+  @for (logo of logos; track logo.name) {
+  <swiper-slide class="flex items-center justify-center">
+    <img [src]="logo.src" [alt]="logo.name" class="h-16 object-contain" />
+  </swiper-slide>
+  }
+</swiper-container>

@@ -1,0 +1,46 @@
+<div>
+  <!-- Header -->
+  <app-nft-header></app-nft-header>
+  <!-- end Header -->
+  <div class="min-h-screen bg-gray-50 p-8 font-sans">
+    <div class="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <app-stats-card
+        label="Total Users"
+        [value]="2350"
+        [percentage]="12.5"
+        [isPositive]="true"
+        icon="users"></app-stats-card>
+      <app-stats-card
+        label="Registered Organizations"
+        [value]="125"
+        [percentage]="3"
+        [isPositive]="true"
+        icon="orgs"></app-stats-card>
+      <app-stats-card
+        label="Active Cyber Helpers"
+        [value]="102"
+        [percentage]="5.2"
+        [isPositive]="true"
+        icon="cyber"></app-stats-card>
+      <app-stats-card
+        label="Reports Completed"
+        [value]="87"
+        [percentage]="3"
+        [isPositive]="true"
+        icon="reports"></app-stats-card>
+    </div>
+
+    <div class="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div class="lg:col-span-2">
+        <div nft-auctions-table></div>
+      </div>
+      <div>
+        <app-region-activity [regions]="mockRegions"></app-region-activity>
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
+    <!-- Auctions Table -->
+    <div nft-auctions-table class="md:col-span-2 xl:col-span-3"></div>
+  </div>
+</div>

@@ -1,0 +1,118 @@
+<app-org-profile-header></app-org-profile-header>
+<div class="min-h-screen">
+  <div class="mb-6 p-6">
+    <div class="mb-4 flex items-center space-x-4">
+      <img
+        [src]="organization()?.logoUrl || '/assets/logo.svg'"
+        alt="Organization Logo"
+        class="h-24 w-24 rounded-full object-cover" />
+      <div class="flex-1">
+        <h1 class="text-primary text-[22px] font-semibold">{{ organization()?.name }}</h1>
+        <p class="text-primary flex items-center text-base">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="text-success mr-1 h-4 w-4"
+            viewBox="0 0 20 20"
+            fill="currentColor">
+            <path
+              fill-rule="evenodd"
+              d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+              clip-rule="evenodd" />
+          </svg>
+          {{ organization()?.location }}
+        </p>
+      </div>
+      <span class="inline-flex items-center rounded-lg bg-[#22C55E1A] px-3 py-2 text-sm font-medium text-[#22C55E]">
+        {{ organization()?.type }}
+      </span>
+    </div>
+
+    <p class="mb-3 border-b border-[#23044833] pb-3 leading-relaxed text-[#230448B2]">
+      {{ organization()?.description }}
+    </p>
+
+    <h2 class="text-primary mb-3 text-lg font-semibold">Contact Details</h2>
+    <div
+      class="text-primary grid grid-cols-1 gap-4 border-b border-[#23044833] pb-4 text-sm font-semibold md:grid-cols-3">
+      <div class="flex items-center">
+        <svg
+          width="20"
+          class="mr-2 h-5 w-5"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M14.3177 2.9165H5.56771C3.72676 2.9165 2.23438 4.40889 2.23438 6.24984V13.7498C2.23438 15.5908 3.72676 17.0832 5.56771 17.0832H14.3177C16.1587 17.0832 17.651 15.5908 17.651 13.7498V6.24984C17.651 4.40889 16.1587 2.9165 14.3177 2.9165Z"
+            stroke="#00A062"
+            stroke-width="1.25" />
+          <path
+            d="M2.27344 6.32471L8.2776 9.76637C8.78075 10.0583 9.35213 10.2121 9.93385 10.2121C10.5156 10.2121 11.087 10.0583 11.5901 9.76637L17.6109 6.32471"
+            stroke="#00A062"
+            stroke-width="1.25"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <a [href]="'mailto:' + organization()?.contact?.email">{{ organization()?.contact?.email }}</a>
+      </div>
+      <div class="flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="text-success mr-2 h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        <span>{{ organization()?.contact?.phone }}</span>
+      </div>
+      <div class="flex items-center">
+        <svg
+          width="20"
+          height="20"
+          class="text-success mr-2 h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_980_1031)">
+            <path
+              d="M1.25 10C1.25 12.3206 2.17187 14.5462 3.81282 16.1872C5.45376 17.8281 7.67936 18.75 10 18.75C12.3206 18.75 14.5462 17.8281 16.1872 16.1872C17.8281 14.5462 18.75 12.3206 18.75 10C18.75 7.67936 17.8281 5.45376 16.1872 3.81282C14.5462 2.17187 12.3206 1.25 10 1.25C7.67936 1.25 5.45376 2.17187 3.81282 3.81282C2.17187 5.45376 1.25 7.67936 1.25 10Z"
+              stroke="#00A062"
+              stroke-width="1.25"
+              stroke-linejoin="round" />
+            <path
+              d="M6.25 10C6.25 7.67936 6.64509 5.45376 7.34835 3.81282C8.05161 2.17187 9.00544 1.25 10 1.25C10.9946 1.25 11.9484 2.17187 12.6516 3.81282C13.3549 5.45376 13.75 7.67936 13.75 10C13.75 12.3206 13.3549 14.5462 12.6516 16.1872C11.9484 17.8281 10.9946 18.75 10 18.75C9.00544 18.75 8.05161 17.8281 7.34835 16.1872C6.64509 14.5462 6.25 12.3206 6.25 10Z"
+              stroke="#00A062"
+              stroke-width="1.25"
+              stroke-linejoin="round" />
+            <path
+              d="M1.875 12.9166H18.125M1.875 7.08325H18.125"
+              stroke="#00A062"
+              stroke-width="1.25"
+              stroke-linecap="round" />
+          </g>
+          <defs>
+            <clipPath id="clip0_980_1031">
+              <rect width="20" height="20" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+        <a
+          [href]="'https://' + organization()?.contact?.website"
+          target="_blank"
+          class="text-primary hover:underline"
+          >{{ organization()?.contact?.website }}</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <app-org-profile-table
+    [diagnosticEntries]="diagnosticHistory()"
+    [statusBadgeMap]="statusMap"
+    (viewDiagnostic)="onViewDiagnostic($event)" />
+</div>

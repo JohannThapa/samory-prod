@@ -1,0 +1,11 @@
+input.input{
+    background: #F8F4FE !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+button{
+    cursor: pointer;
+}
+button:disabled{
+    cursor: not-allowed;
+}

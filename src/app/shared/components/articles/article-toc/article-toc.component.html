@@ -1,0 +1,14 @@
+<div class="sticky top-24 rounded-lg border border-[#23044833] bg-[#F8F4FE] p-6">
+  <h3 class="mb-4 text-base font-bold text-[#00A062]">
+    {{ 'helper.toc.title' | translate }}
+  </h3>
+  <ul class="space-y-2">
+    <li *ngFor="let section of sections; let i = index">
+      <button
+        (click)="scrollTo(section.id)"
+        class="text-primary text-left text-base transition-colors duration-200 hover:text-purple-600">
+        {{ section.title }}
+      </button>
+    </li>
+  </ul>
+</div>

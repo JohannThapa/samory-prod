@@ -1,0 +1,32 @@
+<div class="flex h-full flex-col">
+  <div class="px-4 pt-4 pb-2">
+    <label class="relative block">
+      <input
+        class="focus:ring-primary/40 w-full rounded-full border border-gray-200 bg-white py-2.5 pl-9 pr-4 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2"
+        type="search"
+        placeholder="Search…"
+        [value]="query()"
+        (input)="onSearch($event.target)" />
+      <svg
+        class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2">
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.3-4.3" />
+      </svg>
+    </label>
+  </div>
+
+  <div class="space-y-1 overflow-y-auto px-2 pb-3">
+    @for (c of store.conversationList(); track c.id) {
+    <app-conversation-item
+      [conversation]="c"
+      [lastMessage]="c.lastMessageId ? store.state().messages[c.lastMessageId] : null"
+      [otherUser]="store.getOtherUser(c)"
+      [active]="store.selectedConversationId() === c.id"
+      (click)="store.selectConversation(c.id)" />
+    }
+  </div>
+</div>

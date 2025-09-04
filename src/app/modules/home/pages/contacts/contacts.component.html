@@ -1,0 +1,65 @@
+<div
+  class="hero-container relative flex h-screen min-h-[600px] flex-col items-center justify-center overflow-hidden p-8 pt-20 text-white sm:pt-0">
+  <div class="bg-pattern-layer absolute inset-0 opacity-50"></div>
+
+  <div class="hero-content relative z-20 mx-auto max-w-[800px] text-center">
+    <h1 class="mb-4 text-[48px] font-bold leading-[47px] md:text-5xl">
+      Worried about <span class="text-amber-400">cyber threats?</span>
+      We're here to help.
+    </h1>
+    <p class="description mx-auto mb-8 max-w-2xl text-base leading-snug text-white md:text-[22px]">
+      Whether you're facing an issue, have a question, or want to partner with us, we'd love to hear from you.
+    </p>
+    <div class="button-group flex flex-wrap justify-center gap-4">
+      <app-glassy-button
+        [iconPath]="'../../../../../assets/icons/internal/check-fill.svg'"
+        iconColor="white"
+        [borderColor]="'glass'"
+        [routerLink]="['/dashboard']">
+        On-site or video
+      </app-glassy-button>
+      <app-glassy-button
+        [iconPath]="'../../../../../assets/icons/internal/check-fill.svg'"
+        iconColor="white"
+        [borderColor]="'glass'"
+        [routerLink]="['/dashboard']">
+        1-2 day response
+      </app-glassy-button>
+      <app-glassy-button
+        [iconPath]="'../../../../../assets/icons/internal/check-fill.svg'"
+        iconColor="white"
+        [borderColor]="'glass'"
+        [routerLink]="['/dashboard']">
+        Anonymous & secure
+      </app-glassy-button>
+    </div>
+  </div>
+</div>
+
+<section class="relative z-10 -mt-32 mb-32">
+  <ng-container *ngIf="!formSubmittedSuccessfully">
+    <app-contact-form (formSubmitted)="onFormSubmitted()"></app-contact-form>
+  </ng-container>
+  <div *ngIf="formSubmittedSuccessfully" class="rounded-4xl mx-auto w-full max-w-5xl gap-8 shadow-lg">
+    <div class="rounded-4xl contact-success w-full bg-white p-12 text-center">
+      <svg-icon src="assets/icons/internal/success.svg" [svgClass]="'h-[95px] w-[95px] mx-auto mb-8'"> </svg-icon>
+
+      <h2 class="mb-6 text-2xl font-bold text-gray-800 md:text-[42px]">Thank you! Message Sent Successfully</h2>
+      <p class="text-primary mb-12 text-sm md:text-[18px]">
+        Your message has been sent. We'll get back to you within 24–48 hours.
+      </p>
+      <div class="flex flex-col space-y-4 px-8 md:flex-row md:space-x-4 md:space-y-0 md:px-28">
+        <button
+          [routerLink]="['/']"
+          class="text-primary w-full cursor-pointer rounded-lg bg-yellow-400 p-3 text-base font-semibold hover:bg-yellow-500 focus:outline-none focus:ring focus:ring-yellow-300">
+          Return to Homepage
+        </button>
+        <button
+          [routerLink]="['/help']"
+          class="border-primary text-primary w-full cursor-pointer rounded-lg border bg-transparent p-3 font-semibold hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-200">
+          Visit Help Center
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

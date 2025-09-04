@@ -1,0 +1,244 @@
+:host {
+    display: block;
+}
+
+.hero-container {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: #ffffff;
+    background: linear-gradient(to bottom, #37056B, #190231);
+    overflow: hidden;
+}
+
+.hero-container::before {
+    content: '';
+    position: absolute;
+    opacity: 0.3;
+    top: 20%;
+    left: 35%;
+    width: 30%;
+    height: 70%;
+    background-image: url('../../../../../assets/illustrations/home_layer_0-1.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.hero-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(#ffffff20 1px, transparent 1px),
+        radial-gradient(#ffffff30 1.5px, transparent 1.5px),
+        radial-gradient(#ffffff50 0.5px, transparent 0.5px);
+    background-size:
+        100px 100px,
+        120px 120px,
+        150px 150px;
+    background-position:
+        25px 25px,
+        -50px 75px,
+        100px -125px;
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 900px;
+}
+
+.bg-pattern-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../../../assets/illustrations/Pattern.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: 2;
+}
+
+.icon {
+    position: absolute;
+    z-index: 4;
+}
+
+.icon button {
+    background-color: #4E0D8C;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.icon-svg {
+    width: 24px;
+    height: 24px;
+    color: #ffffff;
+    stroke: currentColor;
+}
+
+.top-left {
+    top: 4rem;
+    left: 4rem;
+}
+
+.top-right {
+    top: 4rem;
+    right: 4rem;
+}
+
+.bottom-left {
+    bottom: 4rem;
+    left: 4rem;
+}
+
+.bottom-right {
+    bottom: 4rem;
+    right: 4rem;
+}
+
+.header-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: #581897;
+    border-radius: 50px;
+    padding: 8px 16px;
+    margin-bottom: 24px;
+}
+
+.badge-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    color: #ffffff;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.highlight-text {
+    color: #FFC900;
+}
+
+.description {
+    font-size: 18px !important;
+    line-height: 1.5;
+    padding: 0 100px;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.button-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    font-weight: 600;
+    padding: 12px 32px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #ffffff;
+    color: #581897;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #f0f0f0;
+}
+
+.btn-secondary:hover {
+    background-color: #ffffff;
+    color: #581897;
+}
+
+.fab-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: #FFC900;
+    color: #581897;
+    border: none;
+    border-radius: 50%;
+    padding: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 5;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.fab-btn:hover {
+    background-color: #e6b800;
+}
+
+.fab-icon {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 768px) {
+    .hero-container {
+        min-height: 500px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .icon.top-left,
+    .icon.top-right,
+    .icon.bottom-left,
+    .icon.bottom-right {
+        display: none;
+    }
+}
+
+.first-arrow{
+    left: 55%;
+    top: 30%
+}

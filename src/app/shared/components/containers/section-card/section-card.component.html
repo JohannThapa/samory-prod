@@ -1,0 +1,11 @@
+<section class="w-full">
+  <div class="px-18 mx-auto max-w-full">
+    <h2 class="text-[28px] font-semibold tracking-tight text-white md:text-[32px]">{{ title }}</h2>
+    <p *ngIf="subtitle" class="mt-2 text-base leading-6 text-white/80 md:text-[18px]">
+      {{ subtitle }}
+    </p>
+    <div class="mt-8">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</section>

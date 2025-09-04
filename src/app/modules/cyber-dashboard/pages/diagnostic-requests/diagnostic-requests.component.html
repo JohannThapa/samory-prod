@@ -1,0 +1,14 @@
+<app-diagnostic-header></app-diagnostic-header>
+<div class="min-h-screen bg-[#FAF6FB] p-6 md:p-8">
+  <div class="mx-auto grid max-w-[1280px] grid-cols-[280px_1fr] gap-6">
+    <!-- Filter column (fixed width) -->
+    <app-diagnostic-filter
+      class="h-full"
+      (submitFilters)="onSubmitFilters($event)"
+      (resetFilters)="onResetFilters()"></app-diagnostic-filter>
+
+    <!-- Results column (flexible) -->
+    <app-diagnostic-results class="h-full" [rows]="results()" [loading]="loading()" (viewDetail)="onViewDetail($event)">
+    </app-diagnostic-results>
+  </div>
+</div>

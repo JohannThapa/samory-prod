@@ -1,0 +1,68 @@
+:host {
+    display: block;
+}
+.hero-container{
+    background-color: white !important;
+}
+.hero-container::before {
+    content: '';
+    position: absolute;
+    opacity: 0.9;
+    top: 20%;
+    left: 35%;
+    width: 380px;
+    height: 320px;
+    background-image: url('../../../../../assets/illustrations/security.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.highlight-text {
+    color: #FFC900;
+}
+
+.description {
+    font-size: 18px !important;
+    line-height: 1.5;
+    padding: 0 20px;
+    margin-bottom: 2rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+@media (max-width: 768px) {
+    .hero-container {
+        min-height: 500px;
+    }
+
+    .hero-container::before {
+        top: 15%;
+        left: 5%;
+        width: 90%;
+        height: 50%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .description {
+        font-size: 1rem;
+        padding: 0;
+    }
+
+}

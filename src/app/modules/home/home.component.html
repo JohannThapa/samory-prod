@@ -1,0 +1,13 @@
+<div class="flex h-screen w-full flex-col overflow-hidden">
+  <app-home-navbar [scrollTarget]="scrollArea"></app-home-navbar>
+
+  <div
+    id="main-content"
+    #scrollArea
+    class="scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted grow overflow-auto">
+    <div class="mx-auto w-full">
+      <router-outlet></router-outlet>
+      <app-home-footer></app-home-footer>
+    </div>
+  </div>
+</div>

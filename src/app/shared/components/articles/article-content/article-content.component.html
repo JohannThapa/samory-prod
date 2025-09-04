@@ -1,0 +1,19 @@
+<div class="space-y-12">
+  <section>
+    <p class="text-primary font-normal leading-relaxed">
+      {{ 'helper.content.intro' | translate }}
+    </p>
+  </section>
+  <section *ngFor="let section of article?.sections" [id]="section.id">
+    <h2 class="text-primary mb-4 text-2xl font-bold">{{ section.title }}</h2>
+    <p class="text-primary whitespace-pre-line font-normal leading-relaxed">
+      {{ section.content }}
+    </p>
+  </section>
+  <div class="mt-12 flex justify-center rounded-xl bg-gray-100 p-8">
+    <img
+      [src]="article?.image ? article?.image : 'https://placehold.co/600x400/F3F4F6/6B7280?text=Placeholder%20Image'"
+      alt="Placeholder"
+      class="h-auto w-full rounded-md object-cover" />
+  </div>
+</div>

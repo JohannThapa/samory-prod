@@ -1,0 +1,33 @@
+<div class="mb-3 flex" [class.justify-end]="isMine" [class.justify-start]="!isMine">
+  <div
+    class="max-w-[70%] rounded-2xl px-4 py-2 text-sm shadow"
+    [ngClass]="{
+      'bg-primary rounded-br-none text-white': isMine,
+      'rounded-bl-none bg-gray-100 text-gray-800': !isMine
+    }">
+    <p class="whitespace-pre-line break-words">
+      {{ message.text }}
+    </p>
+
+    <div *ngIf="message.attachments?.length" class="mt-2 grid grid-cols-2 gap-2">
+      <img
+        *ngFor="let att of message.attachments"
+        [src]="att.url"
+        [alt]="att.type"
+        class="h-32 w-full rounded-lg border object-cover" />
+    </div>
+
+    <div class="mt-1 flex items-center justify-end gap-1 text-xs opacity-70">
+      <span>{{ message.createdAt | date : 'shortTime' }}</span>
+      <ng-container *ngIf="isMine">
+        <ng-icon
+          name="hero-check"
+          class="h-4 w-4"
+          [ngClass]="{
+            'text-gray-400': message.status !== 'read',
+            'text-blue-400': message.status === 'read'
+          }"></ng-icon>
+      </ng-container>
+    </div>
+  </div>
+</div>

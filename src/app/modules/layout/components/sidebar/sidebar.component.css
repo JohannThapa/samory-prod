@@ -1,0 +1,11 @@
+/* Deep violet vertical rail with a soft vignette like the screenshot */
+:host ::ng-deep .bg-sidebar {
+    background: radial-gradient(120% 140% at -10% -10%, #3e0a7b 0%, #2c0b58 42%, #1f0b43 100%);
+  }
+  
+  /* Hide scrollbars but keep scrollability (for long menus if you add it later) */
+  :host ::ng-deep .sidebar-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,.15) transparent;
+  }
+  

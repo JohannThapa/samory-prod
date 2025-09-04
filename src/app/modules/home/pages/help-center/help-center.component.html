@@ -1,0 +1,26 @@
+<div class="bg-white">
+  <!-- Header Section -->
+  <app-help-header></app-help-header>
+
+  <section class="relative z-20 p-8">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          *ngFor="let category of categories"
+          (click)="navigateTo(category.slug)"
+          class="flex items-start space-x-4 rounded-xl bg-white p-6 transition-shadow duration-300">
+          <div class="flex-shrink-0">
+            <svg-icon [src]="category.iconPath" [svgClass]="'h-20 w-20 md:h-[81px] md:w-[81px]'"> </svg-icon>
+          </div>
+          <div>
+            <h3 class="text-primary mb-2 text-xl font-bold">{{ category.title }}</h3>
+            <p class="text-gray-600">{{ category.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Topics Section -->
+  <app-recent-topics [topics]="topics"></app-recent-topics>
+</div>

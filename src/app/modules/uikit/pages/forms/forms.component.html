@@ -1,0 +1,130 @@
+<div class="mx-auto max-w-2xl rounded-xl bg-gray-50 p-8">
+  <div class="mb-4 flex flex-col space-y-6">
+    <h3 class="text-foreground text-2xl font-bold">Forms Example</h3>
+    <p class="text-muted-foreground text-sm">Please fill out the form below.</p>
+  </div>
+  <div class="mx-auto w-full max-w-2xl rounded-2xl bg-white p-8 shadow-sm">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-6">
+      <div class="form-field-container">
+        <label class="form-label">Short bio / Introduction</label>
+        <textarea formControlName="bio" placeholder="Write some intro about you" class="form-textarea"></textarea>
+      </div>
+
+      <div class="form-field-container">
+        <label class="form-label">LinkedIn Profile</label>
+        <input type="url" formControlName="linkedin" placeholder="Enter URL" class="form-input" />
+      </div>
+
+      <div class="form-field-container">
+        <label class="form-label">Spoken Languages</label>
+        <ng-select
+          [items]="languages"
+          bindLabel="name"
+          formControlName="languages"
+          [multiple]="true"
+          placeholder="Select Languages"
+          class="ng-select-custom"></ng-select>
+      </div>
+
+      <div class="form-field-container">
+        <label class="form-label">Years of Experience</label>
+        <ng-select
+          [items]="years"
+          bindLabel="name"
+          formControlName="years"
+          placeholder="Select Years of Experience"
+          class="ng-select-custom"></ng-select>
+      </div>
+
+      <div class="form-field-container">
+        <label class="form-label">Expertise</label>
+        <ng-select
+          [items]="expertiseList"
+          bindLabel="name"
+          formControlName="expertise"
+          [multiple]="true"
+          placeholder="e.g., Phishing, Malware, Awareness Training"
+          class="ng-select-custom"></ng-select>
+      </div>
+
+      <!-- Availability -->
+      <div class="form-field-container">
+        <label class="form-label">Availability</label>
+        <ng-select
+          [items]="availabilityOptions"
+          bindLabel="name"
+          formControlName="availability"
+          placeholder="Select availability"
+          class="ng-select-custom"></ng-select>
+      </div>
+      <div class="form-field-container">
+        <div class="flex items-center space-x-2">
+          <label class="text-foreground cursor-pointer text-sm font-semibold" for="notifications">Notifications</label>
+          <div
+            class="custom-switch relative h-[22px] w-[44px] rounded-full transition-colors duration-200 ease-in-out"
+            [ngClass]="{
+              'bg-primary': form.get('notifications')?.value,
+              'bg-muted-foreground/30': !form.get('notifications')?.value,
+              'cursor-not-allowed opacity-50': form.get('notifications')?.disabled
+            }"
+            (click)="
+              form.get('notifications')?.disabled
+                ? null
+                : form.get('notifications')?.setValue(!form.get('notifications')?.value)
+            ">
+            <span
+              class="custom-switch-circle bg-background absolute top-0.5 h-[18px] w-[18px] transform rounded-full shadow-md transition duration-200 ease-in-out"
+              [ngClass]="{
+                'translate-x-[22px]': form.get('notifications')?.value,
+                'translate-x-[2px]': !form.get('notifications')?.value
+              }"></span>
+          </div>
+          <input type="checkbox" id="notifications" class="hidden" formControlName="notifications" />
+        </div>
+      </div>
+      <div class="form-field-container">
+        <div class="flex items-center space-x-2">
+          <label class="text-foreground cursor-pointer text-sm font-semibold" for="darkMode">Dark Mode</label>
+          <div
+            class="custom-switch relative h-[22px] w-[44px] rounded-full transition-colors duration-200 ease-in-out"
+            [ngClass]="{
+              'bg-primary': form.get('darkMode')?.value,
+              'bg-muted-foreground/30': !form.get('darkMode')?.value,
+              'cursor-not-allowed opacity-50': form.get('darkMode')?.disabled
+            }"
+            (click)="
+              form.get('darkMode')?.disabled ? null : form.get('darkMode')?.setValue(!form.get('darkMode')?.value)
+            ">
+            <span
+              class="custom-switch-circle bg-background absolute top-0.5 h-[18px] w-[18px] transform rounded-full shadow-md transition duration-200 ease-in-out"
+              [ngClass]="{
+                'translate-x-[22px]': form.get('darkMode')?.value,
+                'translate-x-[2px]': !form.get('darkMode')?.value
+              }"></span>
+          </div>
+          <input type="checkbox" id="darkMode" class="hidden" formControlName="darkMode" />
+        </div>
+      </div>
+      <div class="form-field-container">
+        <label class="form-label">Description</label>
+        <ckeditor
+          *ngIf="Editor && config"
+          [editor]="Editor"
+          [config]="config"
+          [formControlName]="'description'"
+          (ready)="onReady($event)">
+        </ckeditor>
+      </div>
+      <div class="flex justify-end gap-4 pt-4">
+        <app-button tone="primary" impact="light" size="large" shape="rounded" (buttonClick)="openModal()">
+          <span>Dialog</span>
+        </app-button>
+        <app-button tone="primary" impact="bold" size="large" shape="rounded" (buttonClick)="submit()">
+          <span>Submit</span>
+        </app-button>
+      </div>
+    </form>
+  </div>
+</div>
+<app-modal-dialog [isOpen]="isModalOpen" [data]="modalData" (close)="isModalOpen = false" (confirm)="onConfirmAction()">
+</app-modal-dialog>

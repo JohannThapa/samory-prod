@@ -1,0 +1,9 @@
+.gradient-warning {
+    background: linear-gradient(90deg, #FFD423 0%, #FFA600 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /* for non-webkit browsers */
+    color: transparent; /* fallback */
+    font-weight: bold; /* optional */
+  }
+  

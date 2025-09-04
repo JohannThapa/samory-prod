@@ -1,0 +1,53 @@
+<ui-data-table
+  #table
+  [title]="'Diagnostic Requests'"
+  [subtitle]="''"
+  [ctaLabel]="'View All'"
+  [columns]="columns"
+  [rows]="rows()"
+  [isStrip]="true"
+  [tableWidthClass]="'max-w-full'"
+  [statusBadgeMap]="statusMap"
+  (ctaClick)="onCta()"
+  (rowClick)="onRowClick($event)"
+  (cellClick)="onCellClick($event)"
+  (action)="onAction($event)"
+  class="w-full">
+  <ng-template dtCell="diagnostic" let-row>
+    <span class="text-[14px] font-medium text-[#2A1F4D]">{{ row.label }}</span>
+  </ng-template>
+
+  <ng-template dtCell="organization" let-row>
+    <ui-org-cell [avatar]="row.org.avatar" [primary]="row.org.name" [secondary]="row.org.sub" />
+  </ng-template>
+
+  <ng-template dtCell="date" let-row>
+    <span class="text-[#2A1F4D]">{{ row.startDate }}</span>
+  </ng-template>
+
+  <ng-template dtCell="statusPill" let-row>
+    <span
+      class="inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-semibold"
+      [ngClass]="statusMap[row.status].classes || 'bg-gray-100 text-gray-700 '">
+      {{ row.status }}
+    </span>
+  </ng-template>
+
+  <ng-template dtCell="progress" let-row>
+    <span class="text-[#2A1F4D]">{{ row.progress }}</span>
+  </ng-template>
+
+  <ng-template dtCell="actions" let-row let-table="table">
+    <button
+      type="button"
+      (click)="table.emitAction('menu', row, $event)"
+      class="border-1 inline-flex h-8 w-8 items-center justify-center rounded-md bg-white ring-1 ring-violet-200 hover:bg-violet-50"
+      aria-label="Open actions">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-[#2A1F4D]">
+        <circle cx="12" cy="5" r="2"></circle>
+        <circle cx="12" cy="12" r="2"></circle>
+        <circle cx="12" cy="19" r="2"></circle>
+      </svg>
+    </button>
+  </ng-template>
+</ui-data-table>

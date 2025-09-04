@@ -1,0 +1,110 @@
+<div
+  class="hero-container hero-container-white relative flex h-[50vh] min-h-[60vh] flex-col items-center justify-center overflow-hidden p-8 pt-10 text-white sm:pt-0">
+  <div class="hero-content relative z-20 mx-auto mt-24 max-w-full text-center">
+    <h1 class="text-primary mb-4 text-[48px] font-bold leading-[47px] md:text-[52px]">
+      {{ 'privacyPolicy.title' | translate }}
+    </h1>
+    <p class="text-primary mb-2 text-center text-[18px]">
+      {{ 'privacyPolicy.description' | translate }}
+    </p>
+    <p class="text-primary mb-0 text-center text-[18px]">
+      {{ 'privacyPolicy.lastUpdated' | translate
+      }}<span class="text-success">{{ 'privacyPolicy.date' | translate }}</span>
+    </p>
+  </div>
+</div>
+
+<div class="min-h-screen">
+  <main class="cgu-container container mx-auto p-4 md:p-8">
+    <div class="mx-auto max-w-4xl rounded-3xl border border-gray-200 bg-[#F8F4FE] p-6 shadow-lg md:p-12">
+      <div class="text-primary space-y-6 md:space-y-8">
+        <div>
+          <p>
+            {{ 'privacyPolicy.intro' | translate }}
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'privacyPolicy.dataCollected.title' | translate }}
+          </h2>
+          <p>{{ 'privacyPolicy.dataCollected.forAllUsersTitle' | translate }}</p>
+          <ul class="list-inside list-disc space-y-2">
+            <li>{{ 'privacyPolicy.dataCollected.allUsers.ipAddress' | translate }}</li>
+            <li>{{ 'privacyPolicy.dataCollected.allUsers.deviceType' | translate }}</li>
+            <li>{{ 'privacyPolicy.dataCollected.allUsers.securityInfo' | translate }}</li>
+          </ul>
+          <p class="mt-4">{{ 'privacyPolicy.dataCollected.forCyberHelpersTitle' | translate }}</p>
+          <ul class="list-inside list-disc space-y-2">
+            <li>{{ 'privacyPolicy.dataCollected.cyberHelpers.fullName' | translate }}</li>
+            <li>{{ 'privacyPolicy.dataCollected.cyberHelpers.phoneNumber' | translate }}</li>
+            <li>{{ 'privacyPolicy.dataCollected.cyberHelpers.expertise' | translate }}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'privacyPolicy.whyWeCollect.title' | translate }}
+          </h2>
+          <ul class="list-inside list-disc space-y-2">
+            <li>{{ 'privacyPolicy.whyWeCollect.manageAccount' | translate }}</li>
+            <li>{{ 'privacyPolicy.whyWeCollect.communicateUpdates' | translate }}</li>
+            <li>{{ 'privacyPolicy.whyWeCollect.complyWithObligations' | translate }}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'privacyPolicy.dataStorage.title' | translate }}
+          </h2>
+          <p>{{ 'privacyPolicy.dataStorage.description' | translate }}</p>
+          <ul class="mt-2 list-inside list-disc space-y-2">
+            <li>{{ 'privacyPolicy.dataStorage.ssl' | translate }}</li>
+            <li>{{ 'privacyPolicy.dataStorage.encryptedBackups' | translate }}</li>
+            <li>{{ 'privacyPolicy.dataStorage.passwordHashing' | translate }}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'privacyPolicy.intellectualProperty.title' | translate }}
+          </h2>
+          <p>
+            {{ 'privacyPolicy.intellectualProperty.description' | translate }}
+          </p>
+          <ul class="mt-2 list-inside list-disc space-y-2">
+            <li>{{ 'privacyPolicy.intellectualProperty.copyReuse' | translate }}</li>
+            <li>{{ 'privacyPolicy.intellectualProperty.modifyCollaborate' | translate }}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'privacyPolicy.liabilityLimitations.title' | translate }}
+          </h2>
+          <ul class="list-inside list-disc space-y-2">
+            <li>{{ 'privacyPolicy.liabilityLimitations.misuseDisclaimer' | translate }}</li>
+            <li>{{ 'privacyPolicy.liabilityLimitations.diagnosticDisclaimer' | translate }}</li>
+            <li>{{ 'privacyPolicy.liabilityLimitations.guaranteeDisclaimer' | translate }}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-primary mb-2 text-xl font-semibold md:text-[20px]">
+            {{ 'privacyPolicy.accountTermination.title' | translate }}
+          </h2>
+          <p>
+            {{ 'privacyPolicy.accountTermination.description' | translate }}
+          </p>
+          <ul class="mt-2 list-inside list-disc space-y-2">
+            <li>{{ 'privacyPolicy.accountTermination.violatesTerms' | translate }}</li>
+            <li>{{ 'privacyPolicy.accountTermination.maliciousActivity' | translate }}</li>
+            <li>{{ 'privacyPolicy.accountTermination.disruptsFunction' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<app-subs-container></app-subs-container>

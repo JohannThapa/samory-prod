@@ -1,0 +1,29 @@
+<div class="flex flex-col items-start justify-between md:flex-row md:items-center">
+  <div class="flex-grow">
+    <h1 class="text-primary text-[36px] font-bold">
+      {{ article?.title }}
+    </h1>
+    <p class="text-primary mt-4 flex items-center text-base font-medium">
+      <span class="mr-1 text-[#23044880]">{{ 'helper.header.writtenBy' | translate }}</span>
+      <span class="text-primary font-semibold">{{ article?.author }}</span>
+      <span class="ml-1 text-[#23044880]">– {{ article?.authorRole }}</span>
+      <svg class="mx-2 h-1 w-1 fill-current text-[#23044880]" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="50" />
+      </svg>
+      <span class="font-normal text-[#23044880]">
+        {{ 'helper.header.published' | translate }} {{ article?.publishedAt }}
+      </span>
+    </p>
+  </div>
+  <div class="mt-4 hidden md:mt-0 md:ml-8 lg:block">
+    <button class="text-primary flex items-center font-medium">
+      {{ 'helper.header.allTopics' | translate }}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="ml-1 h-5 w-5">
+        <path
+          fill-rule="evenodd"
+          d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
+          clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+</div>

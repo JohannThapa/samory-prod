@@ -1,0 +1,100 @@
+<div class="w-full min-w-[630px] max-w-2xl rounded-2xl bg-white p-8 text-center shadow-md">
+  <div class="relative">
+    <img src="assets/illustrations/signin-lock.png" alt="Lock Icon" class="absolute -top-8 left-[40%] h-24 w-auto" />
+  </div>
+  <h1 class="mt-18 text-primary text-4xl font-bold">Welcome Back!</h1>
+
+  <form class="w-full space-y-6" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="email" class="text-primary mb-1 block text-left text-sm font-medium"> Email * </label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="e.g. your.email@example.com"
+        class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+        [ngClass]="{ 'border-red-500': submitted && f['email'].errors }" />
+      @if (submitted && f['email'].errors) {
+      <div class="mt-1 text-sm text-red-500">
+        @if (f['email'].errors['required']) {
+        <span>Email is required.</span>
+        } @if (f['email'].errors['email']) {
+        <span>Email is invalid.</span>
+        } @if (f['email'].errors['apiError']) {
+        <span>{{ f['email'].errors['apiError'] }}</span>
+        }
+      </div>
+      }
+    </div>
+
+    <div>
+      <label for="password" class="text-primary mb-1 block text-left text-sm font-medium"> Password * </label>
+      <div class="relative">
+        <input
+          id="password"
+          [type]="passwordVisible ? 'text' : 'password'"
+          formControlName="password"
+          placeholder="Enter Your Password"
+          class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          [ngClass]="{ 'border-red-500': submitted && f['password'].errors }" />
+        <button
+          type="button"
+          (click)="togglePasswordVisibility()"
+          class="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500 hover:text-gray-700">
+          @if (passwordVisible) {
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+            <path
+              fill-rule="evenodd"
+              d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z"
+              clip-rule="evenodd" />
+          </svg>
+          } @else {
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+            <path
+              d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z" />
+            <path
+              d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z" />
+            <path
+              d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
+          </svg>
+          }
+        </button>
+      </div>
+      <a
+        routerLink="/auth/forgot-password"
+        class="text-primary mt-2 block text-right text-sm font-semibold hover:underline">
+        Forgot Password?
+      </a>
+      @if (submitted && f['password'].errors) {
+      <div class="mt-1 text-sm text-red-500">
+        @if (f['password'].errors['required']) {
+        <span>Password is required.</span>
+        } @if (f['password'].errors['apiError']) {
+        <span>{{ f['password'].errors['apiError'] }}</span>
+        }
+      </div>
+      }
+    </div>
+
+    @if (errorMsg()) {
+    <p class="text-center text-sm text-red-600">{{ errorMsg() }}</p>
+    }
+
+    <button
+      type="submit"
+      [disabled]="form.invalid || loading()"
+      class="bg-primary hover:bg-primary-light w-full cursor-pointer rounded-xl py-3 font-semibold text-white transition-colors duration-200">
+      @if (!loading()) {
+      <span>Login</span>
+      } @else {
+      <span>Logging in...</span>
+      }
+    </button>
+
+    <div class="text-primary mt-4 text-center">
+      Don’t have an account?
+      <a routerLink="/auth/register-organization" class="text-primary font-bold hover:underline">Register Here</a>
+    </div>
+  </form>
+</div>

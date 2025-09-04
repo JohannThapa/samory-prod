@@ -1,0 +1,29 @@
+<button
+  type="button"
+  class="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left transition hover:bg-purple-50 focus:outline-none"
+  [class.bg-white]="active"
+  [class.shadow-sm]="active">
+  <span class="relative shrink-0">
+    <img [src]="otherUser?.avatarUrl" alt="avatar" class="h-10 w-10 rounded-full object-cover" />
+    <span
+      class="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full border-2 border-white"
+      [class.bg-green-500]="otherUser?.online"
+      [class.bg-gray-300]="!otherUser?.online"></span>
+  </span>
+
+  <span class="min-w-0 flex-1">
+    <span class="flex items-center gap-2">
+      <span class="max-w-[180px] truncate font-medium">{{ conversation.title }}</span>
+      <span class="ml-auto text-xs text-gray-400">{{ lastMessage?.createdAt | date : 'shortTime' }}</span>
+    </span>
+    <span class="mt-0.5 flex items-center gap-2">
+      <span class="max-w-[210px] truncate text-sm text-gray-500">{{ lastText() }}</span>
+      @if (conversation.unreadCount > 0) {
+      <span
+        class="bg-primary/90 ml-auto inline-flex h-5 min-w-[20px] items-center justify-center rounded-full px-1 text-xs text-white">
+        {{ conversation.unreadCount }}
+      </span>
+      }
+    </span>
+  </span>
+</button>

@@ -1,0 +1,79 @@
+<div>
+  <div class="min-h-screen p-2 font-sans">
+    <div class="mb-8 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
+      <app-stats-card
+        label="Total Users"
+        [value]="2350"
+        [percentage]="12.5"
+        [isPositive]="true"
+        icon="users"></app-stats-card>
+      <app-stats-card
+        label="Registered Organizations"
+        [value]="125"
+        [percentage]="3"
+        [isPositive]="true"
+        icon="orgs"></app-stats-card>
+      <app-stats-card
+        label="Active Cyber Helpers"
+        [value]="102"
+        [percentage]="5.2"
+        [isPositive]="false"
+        icon="cyber"></app-stats-card>
+      <app-stats-card
+        label="Reports Completed"
+        [value]="87"
+        [percentage]="3"
+        [isPositive]="true"
+        icon="reports"></app-stats-card>
+    </div>
+    <div class="min-h-auto mb-4 grid grid-cols-1 gap-8 p-2 md:grid-cols-2">
+      <app-area-stacked-chart
+        [chartData]="stackedAreaChartData()"
+        [chartTitle]="'Diagnostics Status'"
+        [xAxisLabel]="'Months'"
+        [showXAxisLabel]="false"
+        [filterOptions]="filterOptions"
+        [colorScheme]="{ domain: ['#ed63589c', '#00a06266'] }"
+        [width]="500"
+        [height]="400">
+      </app-area-stacked-chart>
+      <app-bar-vertical-stacked
+        [chartData]="chartArrData()"
+        [loading]="isLoading()"
+        [error]="hasError()"
+        [xAxisLabel]="'Months'"
+        [showXAxisLabel]="false"
+        [filterOptions]="filterOptions"
+        [width]="480"
+        [height]="400"
+        (filterChange)="onFilterChange($event)">
+      </app-bar-vertical-stacked>
+    </div>
+
+    <div class="mb-4 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div class="lg:col-span-2">
+        <app-org-diagnostic></app-org-diagnostic>
+        <div class="my-6">
+          <app-pending-table></app-pending-table>
+        </div>
+      </div>
+      <div>
+        <div class="min-h-auto my-4 flex items-center justify-center">
+          <app-card-ui-list
+            [title]="'Recent Messages'"
+            (ctaClick)="onCtaClick('messages')"
+            [items]="messages()"
+            [cardClass]="'lg:col-span-1 my-2 bg-white'">
+          </app-card-ui-list>
+        </div>
+
+        <app-card-ui-list
+          [title]="'Recent Notifications'"
+          (ctaClick)="onCtaClick('messages')"
+          [items]="notifications()"
+          [cardClass]="'lg:col-span-1 my-2 bg-white'">
+        </app-card-ui-list>
+      </div>
+    </div>
+  </div>
+</div>

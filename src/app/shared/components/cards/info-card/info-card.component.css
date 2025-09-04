@@ -1,0 +1,68 @@
+.info-card {
+    position: relative;
+    height: 480px; /* Long for height */
+    width: 280px; /* Short for width */
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #d1d5db; /* Tailwind's gray-300 */
+  
+    &:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+  
+    &.is-primary-card {
+      background-color: #16a34a; /* Tailwind's green-600 */
+      border: none;
+    }
+  
+    /* Glassmorphism Effect for non-primary cards */
+    &:not(.is-primary-card) {
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+          );
+        background-size: 20px 20px; /* Adjust grid size as needed */
+        z-index: 0;
+        opacity: 0.5;
+      }
+    }
+  
+    &:hover {
+      background-color: #16a34a; /* Tailwind's green-600 */
+  
+      .text-primary {
+        color: white;
+      }
+  
+      .text-secondary {
+        color: white;
+      }
+    }
+  }
+  
+  .icon-container {
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    z-index: 10;
+  }

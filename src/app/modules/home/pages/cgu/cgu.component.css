@@ -1,0 +1,14 @@
+.cgu-container {
+    background-image: url('../../../../../assets/images/cgu-bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 500px; 
+    background-attachment: local; 
+    position: relative;
+    z-index: 1; 
+  }
+  
+  .cgu-container > div {
+    position: relative;
+    z-index: 2;
+  }

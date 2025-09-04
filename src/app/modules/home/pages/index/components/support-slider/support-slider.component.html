@@ -1,0 +1,38 @@
+<section class="mx-auto mt-0 max-w-7xl px-4 py-12 md:pr-24">
+  <div class="mb-12 text-center">
+    <h2 class="text-primary text-3xl font-bold md:text-[42px]">What People Are Saying</h2>
+    <p class="text-primary mt-2 text-sm font-medium tracking-normal md:text-lg">
+      Real experiences from organizations and cyber helpers who’ve used the platform.
+    </p>
+  </div>
+
+  <div>
+    <app-image-carousel
+      [logos]="[
+        { src: 'assets/logos/travail.png', name: 'travail' },
+        { src: 'assets/logos/samoce.png', name: 'samoce' },
+        { src: 'assets/logos/cnil.png', name: 'cnil' },
+        { src: 'assets/logos/police.png', name: 'police' },
+        { src: 'assets/logos/comcyber.png', name: 'comcyber' },
+        { src: 'assets/logos/travail.png', name: 'travail 1' },
+        { src: 'assets/logos/samoce.png', name: 'samoce 1' },
+        { src: 'assets/logos/cnil.png', name: 'cnil 1' },
+        { src: 'assets/logos/police.png', name: 'police 1' },
+        { src: 'assets/logos/comcyber.png', name: 'comcyber 1' }
+      ]"
+      [config]="{
+        slidesPerView: 5,
+        spaceBetween: 30,
+        autoplay: {
+          delay: 500,
+          disableOnInteraction: true
+        },
+        loop: true,
+        breakpoints: {
+          '640': { slidesPerView: 3 },
+          '768': { slidesPerView: 4 },
+          '1024': { slidesPerView: 5 }
+        }
+      }"></app-image-carousel>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+.pattern-bg {
+    background-image:
+      linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px),
+      linear-gradient(to bottom right, #FFFFFF, #f7f9ff); 
+    background-size: 30px 30px;
+  }
+
+  .access-card{
+     background: radial-gradient(50% 50% at 50% 50%, #F7F3FD 0%, #FFFFFF 51.44%, #F7F3FD 100%);
+  }
+
+  .pattern-color {
+    background: radial-gradient(50% 50% at 50% 50%, #F7F3FD 0%, #FFFFFF 51.44%, #F7F3FD 100%);
+    opacity: 0.5;
+  }

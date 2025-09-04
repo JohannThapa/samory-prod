@@ -1,0 +1,9 @@
+<button [disabled]="disabled()" [type]="type()" (click)="onButtonClick()" [ngClass]="classes">
+  @if (iconSrc() && iconPosition() === 'left') {
+  <svg-icon [src]="iconSrc()!" [svgClass]="iconSizeClasses[iconSize()]"></svg-icon>
+  }
+  <ng-content></ng-content>
+  @if (iconSrc() && iconPosition() === 'right') {
+  <svg-icon [src]="iconSrc()!" [svgClass]="iconSizeClasses[iconSize()]"></svg-icon>
+  }
+</button>

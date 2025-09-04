@@ -1,0 +1,169 @@
+<div
+  class="hero-container relative flex h-screen min-h-[600px] flex-col items-center justify-center overflow-hidden p-8 pt-20 text-white sm:pt-0">
+  <div class="bg-pattern-layer absolute inset-0 opacity-50"></div>
+
+  <div class="hero-content relative z-20 mx-auto max-w-[900px] text-center">
+    <div class="header-badge mb-6 inline-flex items-center rounded-[50px] bg-[#581897] px-4 py-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="badge-icon mr-2 h-6 w-6 text-white">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <p>{{ 'PROTECT_YOUR_ORG' | translate }}</p>
+    </div>
+    <h1 class="mb-4 text-[48px] font-bold leading-[47px] md:text-5xl">
+      {{ 'GET_FREE_EXPERT' | translate }} <span class="text-amber-400">{{ 'CYBERSECURITY' | translate }}</span>
+      {{ 'SUPPORT_FOR_YOUR_ORG' | translate }}
+    </h1>
+    <p class="description mx-auto mb-8 max-w-2xl text-base leading-snug text-white/80 md:text-lg">
+      {{ 'NON_PROFIT_DESC' | translate }}
+    </p>
+    <div class="button-group flex flex-wrap justify-center gap-4">
+      <app-button (buttonClick)="toCyberHelper()" full impact="light" tone="primary" shape="rounded" size="large">
+        {{ 'BECOME_A_HELPER' | translate }}
+      </app-button>
+      <app-button full impact="none" tone="primary" shape="rounded" size="large">
+        {{ 'REQUEST_DIAGNOSTIC_BTN' | translate }}
+      </app-button>
+    </div>
+  </div>
+
+  <button
+    (click)="toggleChat()"
+    class="fab-btn absolute bottom-6 right-6 z-[75] grid h-[68px] w-[68px] place-items-center rounded-full bg-amber-400 text-center shadow-xl transition hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-amber-400/40">
+    <ng-container *ngIf="!open(); else closeIcon">
+      <svg-icon src="../../../../../assets/icons/internal/chat.svg" [svgClass]="'mx-auto h-8 w-8 text-white'">
+      </svg-icon>
+    </ng-container>
+    <ng-template #closeIcon>
+      <svg-icon src="../../../../../assets/icons/internal/cross.svg" [svgClass]="'mx-auto h-8 w-8 text-white'">
+      </svg-icon>
+    </ng-template>
+  </button>
+</div>
+<section class="relative w-full bg-white py-16 px-6 md:px-12">
+  <div class="mx-auto mb-14 max-w-[848px] text-center">
+    <h2 class="text-[32px] font-bold text-[#230448] md:text-[42px]">Guide To Getting Free Cybersecurity Help</h2>
+    <p class="mt-4 text-[18px] leading-normal text-gray-700 md:text-lg">
+      Whether You're An NGO, SME, Or Local Authority In Guinea, Getting Cybersecurity Support Is Simple And Completely
+      Free. Follow These Four Guided Steps To Request Help And Receive Your Diagnostic Report.
+    </p>
+  </div>
+
+  <div class="relative flex flex-col items-center justify-center gap-12 md:flex-row md:items-start md:gap-24">
+    <div class="relative z-10 w-full max-w-[720px] rounded-2xl bg-[#F6F3FB] p-6 shadow-xl md:w-[720px]">
+      <div
+        class="text-muted absolute -top-6 right-6 flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-[#F6F3FB] text-4xl font-bold">
+        1
+      </div>
+      <h3 class="mb-3 text-[22px] font-bold text-[#230448]">Register Your Organization</h3>
+      <p class="mb-6 text-[16px] leading-6 text-gray-700">
+        Sign up in minutes by providing your organization's name, type (NGO, SME, local authority), and contact details.
+        It's quick and secure.
+      </p>
+      <img src="assets/images/hero_guide.png" alt="Registration Form Example" class="h-auto w-full rounded-lg" />
+    </div>
+
+    <div class="absolute left-1/2 top-[22%] z-0 hidden md:block">
+      <svg width="293" height="107" viewBox="0 0 293 107" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M284.293 106.707C284.683 107.098 285.317 107.098 285.707 106.707L292.071 100.343C292.462 99.9526 292.462 99.3195 292.071 98.9289C291.681 98.5384 291.047 98.5384 290.657 98.9289L285 104.586L279.343 98.9289C278.953 98.5384 278.319 98.5384 277.929 98.9289C277.538 99.3195 277.538 99.9526 277.929 100.343L284.293 106.707ZM0 1V2H4.05882V1V0H0V1ZM12.1765 1V2H20.2941V1V0H12.1765V1ZM28.4118 1V2H36.5294V1V0H28.4118V1ZM44.6471 1V2H52.7647V1V0H44.6471V1ZM60.8823 1V2H69V1V0H60.8823V1ZM77.1176 1V2H85.2353V1V0H77.1176V1ZM93.3529 1V2H101.471V1V0H93.3529V1ZM109.588 1V2H117.706V1V0H109.588V1ZM125.824 1V2H133.941V1V0H125.824V1ZM142.059 1V2H150.176V1V0H142.059V1ZM158.294 1V2H166.412V1V0H158.294V1ZM174.529 1V2H182.647V1V0H174.529V1ZM190.765 1V2H198.882V1V0H190.765V1ZM207 1V2H215.118V1V0H207V1ZM223.235 1V2H231.353V1V0H223.235V1ZM239.471 1V2H247.588V1V0H239.471V1ZM255.706 1V2H263.823V1V0H255.706V1ZM271.941 1V2H276V1V0H271.941V1ZM276 1V2C277.087 2 278.12 2.21607 279.062 2.60665L279.445 1.68292L279.828 0.759199C278.648 0.26968 277.354 0 276 0V1ZM284.317 6.55491L283.393 6.93796C283.784 7.87984 284 8.91342 284 10H285H286C286 8.64593 285.73 7.35232 285.241 6.17186L284.317 6.55491ZM285 10H284V14H285H286V10H285ZM285 22H284V30H285H286V22H285ZM285 38H284V46H285H286V38H285ZM285 54H284V62H285H286V54H285ZM285 70H284V78H285H286V70H285ZM285 86H284V94H285H286V86H285ZM285 102H284V106H285H286V102H285Z"
+          fill="#230448"
+          fill-opacity="0.2" />
+      </svg>
+    </div>
+
+    <div class="relative z-10 w-full max-w-[420px] rounded-2xl bg-[#F6F3FB] p-6 shadow-xl md:mt-64 md:w-[420px]">
+      <div
+        class="text-muted absolute -top-6 right-6 flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-[#F6F3FB] text-4xl font-bold">
+        2
+      </div>
+      <h3 class="mb-3 text-[22px] font-bold text-[#230448]">Request Cyber Help</h3>
+      <p class="mb-6 text-[16px] leading-relaxed text-gray-700">
+        Use our secure form to explain what you need checked — such as a website, emails, internal system, or network.
+        You can upload documents or describe your concerns directly in the platform.
+      </p>
+      <div
+        class="mx-auto flex flex-col items-start justify-between gap-2 rounded-xl bg-transparent sm:flex-row sm:items-center">
+        <img src="assets/images/card2.png" alt="Card 2 screenshot" class="h-auto w-full rounded-lg" />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="relative mt-12 flex flex-col items-center justify-center gap-12 md:mt-12 md:flex-row md:items-end md:gap-24">
+    <div class="relative z-10 w-full max-w-[720px] rounded-2xl bg-[#F6F3FB] p-6 shadow-xl md:w-[450px]">
+      <div
+        class="text-muted absolute -top-6 left-6 flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-[#F6F3FB] text-4xl font-bold">
+        3
+      </div>
+      <h3 class="mb-3 mt-12 text-[22px] font-bold text-[#230448]">Get Matched With A Cyber Helper</h3>
+      <p class="mb-6 text-[16px] leading-6 text-gray-700">
+        Based on your request, we'll match you with a verified Cyber Helper — a trained cybersecurity expert who
+        understands local challenges and will work with you confidentially.
+      </p>
+      <img src="assets/images/card3.png" alt="Card 3 screenshot" class="h-auto w-full rounded-lg" />
+    </div>
+
+    <div class="absolute right-1/3 top-[-18%] z-0 hidden md:block">
+      <svg width="518" height="104" viewBox="0 0 518 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M7.29289 103.707C7.68342 104.098 8.31658 104.098 8.70711 103.707L15.0711 97.3431C15.4616 96.9526 15.4616 96.3195 15.0711 95.9289C14.6805 95.5384 14.0474 95.5384 13.6569 95.9289L8 101.586L2.34315 95.9289C1.95262 95.5384 1.31946 95.5384 0.928932 95.9289C0.538408 96.3195 0.538408 96.9526 0.928932 97.3431L7.29289 103.707ZM8 103H9V99.125H8H7V103H8ZM8 91.375H9V83.625H8H7V91.375H8ZM8 75.875H9V68.125H8H7V75.875H8ZM8 60.375H9V52.625H8H7V60.375H8ZM8 44.875H9V37.125H8H7V44.875H8ZM8 29.375H9V21.625H8H7V29.375H8ZM8 13.875H9V10H8H7V13.875H8ZM8 10H9C9 8.91342 9.21607 7.87984 9.60665 6.93796L8.68293 6.55491L7.7592 6.17185C7.26968 7.35232 7 8.64593 7 10H8ZM13.5549 1.68292L13.938 2.60665C14.8799 2.21607 15.9134 2 17 2V1V0C15.6459 0 14.3523 0.26968 13.1719 0.759199L13.5549 1.68292ZM17 1V2H21.0403V1V0H17V1ZM29.121 1V2H37.2016V1V0H29.121V1ZM45.2823 1V2H53.3629V1V0H45.2823V1ZM61.4436 1V2H69.5242V1V0H61.4436V1ZM77.6049 1V2H85.6855V1V0H77.6049V1ZM93.7662 1V2H101.847V1V0H93.7662V1ZM109.927 1V2H118.008V1V0H109.927V1ZM126.089 1V2H134.169V1V0H126.089V1ZM142.25 1V2H150.331V1V0H142.25V1ZM158.411 1V2H166.492V1V0H158.411V1ZM174.573 1V2H182.653V1V0H174.573V1ZM190.734 1V2H198.814V1V0H190.734V1ZM206.895 1V2H214.976V1V0H206.895V1ZM223.056 1V2H231.137V1V0H223.056V1ZM239.218 1V2H247.298V1V0H239.218V1ZM255.379 1V2H263.46V1V0H255.379V1ZM271.54 1V2H279.621V1V0H271.54V1ZM287.702 1V2H295.782V1V0H287.702V1ZM303.863 1V2H311.944V1V0H303.863V1ZM320.024 1V2H328.105V1V0H320.024V1ZM336.186 1V2H344.266V1V0H336.186V1ZM352.347 1V2H360.428V1V0H352.347V1ZM368.508 1V2H376.589V1V0H368.508V1ZM384.669 1V2H392.75V1V0H384.669V1ZM400.831 1V2H408.911V1V0H400.831V1ZM416.992 1V2H425.073V1V0H416.992V1ZM433.153 1V2H441.234V1V0H433.153V1ZM449.315 1V2H457.395V1V0H449.315V1ZM465.476 1V2H473.557V1V0H465.476V1ZM481.637 1V2H489.718V1V0H481.637V1ZM497.799 1V2H505.879V1V0H497.799V1ZM513.96 1V2H518V1V0H513.96V1Z"
+          fill="#230448"
+          fill-opacity="0.2" />
+      </svg>
+    </div>
+    <div class="absolute left-1/3 top-[26%] z-0 hidden md:block">
+      <svg width="386" height="67" viewBox="0 0 386 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M377.293 66.7071C377.683 67.0976 378.317 67.0976 378.707 66.7071L385.071 60.3431C385.462 59.9526 385.462 59.3195 385.071 58.9289C384.681 58.5384 384.047 58.5384 383.657 58.9289L378 64.5858L372.343 58.9289C371.953 58.5384 371.319 58.5384 370.929 58.9289C370.538 59.3195 370.538 59.9526 370.929 60.3431L377.293 66.7071ZM0 1.5V2.5H4.01087V1.5V0.5H0V1.5ZM12.0326 1.5V2.5H20.0543V1.5V0.5H12.0326V1.5ZM28.0761 1.5V2.5H36.0978V1.5V0.5H28.0761V1.5ZM44.1196 1.5V2.5H52.1413V1.5V0.5H44.1196V1.5ZM60.163 1.5V2.5H68.1848V1.5V0.5H60.163V1.5ZM76.2065 1.5V2.5H84.2283V1.5V0.5H76.2065V1.5ZM92.25 1.5V2.5H100.272V1.5V0.5H92.25V1.5ZM108.293 1.5V2.5H116.315V1.5V0.5H108.293V1.5ZM124.337 1.5V2.5H132.359V1.5V0.5H124.337V1.5ZM140.38 1.5V2.5H148.402V1.5V0.5H140.38V1.5ZM156.424 1.5V2.5H164.446V1.5V0.5H156.424V1.5ZM172.467 1.5V2.5H180.489V1.5V0.5H172.467V1.5ZM188.511 1.5V2.5H196.533V1.5V0.5H188.511V1.5ZM204.554 1.5V2.5H212.576V1.5V0.5H204.554V1.5ZM220.598 1.5V2.5H228.62V1.5V0.5H220.598V1.5ZM236.641 1.5V2.5H244.663V1.5V0.5H236.641V1.5ZM252.685 1.5V2.5H260.707V1.5V0.5H252.685V1.5ZM268.728 1.5V2.5H276.75V1.5V0.5H268.728V1.5ZM284.772 1.5V2.5H292.793V1.5V0.5H284.772V1.5ZM300.815 1.5V2.5H308.837V1.5V0.5H300.815V1.5ZM316.859 1.5V2.5H324.88V1.5V0.5H316.859V1.5ZM332.902 1.5V2.5H340.924V1.5V0.5H332.902V1.5ZM348.946 1.5V2.5H356.967V1.5V0.5H348.946V1.5ZM364.989 1.5V2.5H369V1.5V0.5H364.989V1.5ZM369 1.5V2.5C370.087 2.5 371.12 2.71607 372.062 3.10665L372.445 2.18293L372.828 1.2592C371.648 0.76968 370.354 0.5 369 0.5V1.5ZM377.317 7.05491L376.393 7.43796C376.784 8.37984 377 9.41342 377 10.5H378H379C379 9.14593 378.73 7.85232 378.241 6.67185L377.317 7.05491ZM378 10.5H377V15.125H378H379V10.5H378ZM378 24.375H377V33.625H378H379V24.375H378ZM378 42.875H377V52.125H378H379V42.875H378ZM378 61.375H377V66H378H379V61.375H378Z"
+          fill="#230448"
+          fill-opacity="0.2" />
+      </svg>
+    </div>
+    <div
+      class="relative z-10 flex w-full max-w-[720px] flex-col items-center rounded-2xl bg-[#F6F3FB] p-6 shadow-xl md:w-[720px] md:flex-row md:items-start md:gap-8">
+      <div
+        class="text-muted absolute -top-6 right-6 flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-[#F6F3FB] text-4xl font-bold">
+        4
+      </div>
+      <div class="flex-1">
+        <h3 class="mb-3 text-[22px] font-bold text-[#230448]">Review and Discuss</h3>
+        <p class="mb-6 text-[16px] leading-relaxed text-gray-700">
+          Your diagnostic report includes actionable recommendations. You can view, download, or discuss it with our
+          team directly in your secure dashboard.
+        </p>
+      </div>
+
+      <div class="flex-1">
+        <img src="assets/images/card4.png" alt="Diagnostic Report" class="h-auto w-full rounded-lg" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mb-8 flex flex-col items-center justify-center space-y-4 p-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+  <button
+    class="bg-primary w-full rounded-2xl py-3 px-6 text-base font-bold text-white shadow-lg transition-colors hover:bg-[#4d0099] sm:w-auto">
+    Become a Cyber Helper
+  </button>
+
+  <button
+    class="text-primary border-primary w-full rounded-2xl border-2 bg-white py-3 px-6 text-base font-bold shadow-lg transition-colors hover:bg-gray-100 sm:w-auto">
+    Request Free Diagnostic
+  </button>
+</div>
+<app-cyber-helper></app-cyber-helper>
+<app-cyber-part></app-cyber-part>
+<app-quote-lists></app-quote-lists>
+<app-support-slider></app-support-slider>
+<app-ready-banner></app-ready-banner>
+<app-subs-container></app-subs-container>
+<app-chatbot></app-chatbot>

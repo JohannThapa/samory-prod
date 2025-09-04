@@ -1,0 +1,46 @@
+<div class="px-6 py-8">
+  <div class="mb-4">
+    <app-cyber-org-header></app-cyber-org-header>
+  </div>
+
+  <app-cyber-filter-bar
+    [cities]="cities()"
+    [organizationTypes]="organizationTypes()"
+    [viewMode]="viewMode()"
+    (filterChange)="onFilterChange($event)"
+    (viewChange)="onViewChange($event)" />
+
+  <div *ngIf="viewMode() === 'list'" class="mt-6">
+    <ui-data-table
+      title="Organization list"
+      [columns]="columns"
+      [rows]="organizations()"
+      [isStrip]="true"
+      [tableWidthClass]="'min-w-full'">
+      <ng-template dtCell="nameCell" let-row>
+        <div class="flex items-center space-x-3">
+          <img [src]="row.avatar" alt="logo" class="h-8 w-8 rounded-full" />
+          <div>
+            <div class="font-medium text-[#230448]">{{ row.name }}</div>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template dtCell="websiteCell" let-row>
+        <a [href]="'https://' + row.website" target="_blank" class="text-violet-600 hover:underline">
+          {{ row.website }}
+        </a>
+      </ng-template>
+
+      <ng-template dtCell="actions" let-row>
+        <button type="button" (click)="onViewDetails(row)" class="font-medium text-violet-600 hover:text-violet-800">
+          View &rarr;
+        </button>
+      </ng-template>
+    </ui-data-table>
+  </div>
+
+  <div *ngIf="viewMode() === 'grid'" class="mt-6">
+    <app-cyber-card-grid [organizations]="organizations()" (viewDetails)="onViewDetails($event)" />
+  </div>
+</div>

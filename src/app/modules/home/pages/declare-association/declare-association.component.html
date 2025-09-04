@@ -1,0 +1,255 @@
+<div class="mt-28 mb-12 py-16">
+  <div class="relative z-10 mx-auto w-full max-w-2xl px-4 text-center">
+    <h1 class="text-primary mb-4 text-[52px] font-bold leading-[47px]">
+      {{ 'association.title' | translate }}
+    </h1>
+  </div>
+  <p class="text-primary mx-auto mb-8 max-w-full text-center text-base leading-snug md:text-[18px]">
+    {{ 'association.subtitle' | translate }}
+  </p>
+</div>
+
+<div class="relative z-10 -mt-24 mb-32 px-4">
+  <ng-container *ngIf="!submissionSuccess">
+    <form
+      [formGroup]="associationForm"
+      (ngSubmit)="onSubmit()"
+      class="da-shadow rounded-4xl mx-auto max-w-5xl bg-white p-6 md:p-12">
+      <h2 class="text-primary mb-8 text-[24px] font-bold md:text-[34px]">
+        {{ 'association.registrationTitle' | translate }}
+      </h2>
+      <div class="grid gap-2 md:grid-cols-2">
+        <div class="form-section space-y-6 rounded-2xl bg-[#F8F4FE] p-8">
+          <h3 class="text-xl font-semibold text-[#00A062]">{{ 'association.organization.title' | translate }}</h3>
+          <div class="form-field-container">
+            <label class="form-label">{{ 'association.organization.nameLabel' | translate }} *</label>
+            <input
+              type="text"
+              formControlName="name"
+              placeholder="{{ 'association.organization.namePlaceholder' | translate }}"
+              class="form-input" />
+            <p *ngIf="f['name'].touched && f['name'].invalid" class="text-sm text-red-500">
+              {{ 'association.organization.nameError' | translate }}
+            </p>
+          </div>
+          <div class="form-field-container">
+            <label class="form-label">{{ 'association.organization.emailLabel' | translate }} *</label>
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="{{ 'association.organization.emailPlaceholder' | translate }}"
+              class="form-input" />
+            <p *ngIf="f['email'].touched && f['email'].invalid" class="text-sm text-red-500">
+              {{ 'association.organization.emailError' | translate }}
+            </p>
+          </div>
+          <div class="form-field-container">
+            <label class="form-label">{{ 'association.organization.phoneLabel' | translate }} *</label>
+            <input
+              type="tel"
+              formControlName="phone"
+              placeholder="{{ 'association.organization.phonePlaceholder' | translate }}"
+              class="form-input" />
+            <p *ngIf="f['phone'].touched && f['phone'].invalid" class="text-sm text-red-500">
+              {{ 'association.organization.phoneError' | translate }}
+            </p>
+          </div>
+          <div class="form-field-container">
+            <label class="form-label">{{ 'association.organization.websiteLabel' | translate }} *</label>
+            <input
+              type="url"
+              formControlName="website"
+              placeholder="{{ 'association.organization.websitePlaceholder' | translate }}"
+              class="form-input" />
+            <p *ngIf="f['website'].touched && f['website'].invalid" class="text-sm text-red-500">
+              {{ 'association.organization.websiteError' | translate }}
+            </p>
+          </div>
+          <div class="form-field-container">
+            <label class="form-label">{{ 'association.organization.addressLabel' | translate }} *</label>
+            <input
+              type="text"
+              formControlName="address"
+              placeholder="{{ 'association.organization.addressPlaceholder' | translate }}"
+              class="form-input" />
+            <p *ngIf="f['address'].touched && f['address'].invalid" class="text-sm text-red-500">
+              {{ 'association.organization.addressError' | translate }}
+            </p>
+          </div>
+          <div class="form-field-container">
+            <label class="form-label">{{ 'association.organization.descriptionLabel' | translate }} *</label>
+            <textarea
+              rows="4"
+              formControlName="description"
+              placeholder="{{ 'association.organization.descriptionPlaceholder' | translate }}"
+              class="form-textarea"></textarea>
+            <p *ngIf="f['description'].touched && f['description'].invalid" class="text-sm text-red-500">
+              {{ 'association.organization.descriptionError' | translate }}
+            </p>
+          </div>
+          <h3 class="text-xl font-semibold text-[#00A062]">{{ 'association.representative.title' | translate }}</h3>
+          <div class="form-field-container">
+            <label class="form-label">{{ 'association.representative.nameLabel' | translate }} *</label>
+            <input
+              type="text"
+              formControlName="responsibleName"
+              placeholder="{{ 'association.representative.namePlaceholder' | translate }}"
+              class="form-input" />
+            <p *ngIf="f['responsibleName'].touched && f['responsibleName'].invalid" class="text-sm text-red-500">
+              {{ 'association.representative.nameError' | translate }}
+            </p>
+          </div>
+          <div class="form-field-container">
+            <label class="form-label">{{ 'association.representative.emailLabel' | translate }} *</label>
+            <input
+              type="email"
+              formControlName="responsibleEmail"
+              placeholder="{{ 'association.representative.emailPlaceholder' | translate }}"
+              class="form-input" />
+            <p *ngIf="f['responsibleEmail'].touched && f['responsibleEmail'].invalid" class="text-sm text-red-500">
+              {{ 'association.representative.emailError' | translate }}
+            </p>
+          </div>
+          <div class="form-field-container">
+            <label class="form-label">{{ 'association.representative.phoneLabel' | translate }} *</label>
+            <input
+              type="tel"
+              formControlName="responsiblePhone"
+              placeholder="{{ 'association.representative.phonePlaceholder' | translate }}"
+              class="form-input" />
+            <p *ngIf="f['responsiblePhone'].touched && f['responsiblePhone'].invalid" class="text-sm text-red-500">
+              {{ 'association.representative.phoneError' | translate }}
+            </p>
+          </div>
+          <div class="form-field-container hidden">
+            <label class="form-label">{{ 'association.organization.photoLabel' | translate }} *</label>
+            <input type="file" (change)="onFileSelected($event)" class="form-input" />
+            <p *ngIf="!selectedFile" class="mt-1 text-sm text-red-500">
+              {{ 'association.organization.photoError' | translate }}
+            </p>
+          </div>
+          <div class="form-field-container">
+            <label class="flex cursor-pointer items-start space-x-2">
+              <input type="checkbox" formControlName="termsConsent" class="peer hidden" />
+              <div
+                class="peer-checked:bg-primary peer-checked:border-primary-2 relative h-5 w-5 rounded border-2 border-gray-400">
+                <svg
+                  class="absolute inset-0 m-auto h-4 w-4 text-white opacity-0 transition-opacity duration-200 peer-checked:opacity-100"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span class="text-primary text-sm">{{ 'association.terms.label' | translate }}</span>
+            </label>
+            <p *ngIf="f['termsConsent'].touched && f['termsConsent'].invalid" class="text-sm text-red-500">
+              {{ 'association.terms.error' | translate }}
+            </p>
+          </div>
+          <button
+            type="submit"
+            class="bg-primary mt-8 w-full rounded-lg p-3 font-semibold text-white hover:bg-purple-800"
+            [disabled]="associationForm.invalid">
+            <ng-container *ngIf="!isLoading">{{ 'association.form.submitButton' | translate }}</ng-container>
+            <ng-container *ngIf="isLoading">{{ 'association.form.submittingButton' | translate }}</ng-container>
+          </button>
+        </div>
+
+        <div class="form-section space-y-2">
+          <div class="mt-2 p-6 text-gray-700">
+            <h3 class="text-primary mb-4 text-xl font-semibold">{{ 'association.benefits.title' | translate }}</h3>
+            <p class="mb-4">{{ 'association.benefits.description' | translate }}</p>
+            <app-success-card>
+              <ul class="space-y-6">
+                <li class="flex items-center space-x-4">
+                  <div class="flex-shrink-0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M12.0001 21C14.0823 21 16.1001 20.278 17.7096 18.957C19.3192 17.6361 20.4209 15.7979 20.8271 13.7557C21.2333 11.7136 20.9188 9.5937 19.9373 7.75737C18.9557 5.92104 17.3678 4.48187 15.4441 3.68506C13.5204 2.88825 11.3799 2.78311 9.38739 3.38756C7.39486 3.992 5.67355 5.26863 4.51675 6.99992C3.35996 8.73121 2.83925 10.81 3.04336 12.8822C3.24746 14.9544 4.16375 16.8917 5.63609 18.364"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round" />
+                      <path
+                        d="M16 10L12.402 14.318C11.747 15.104 11.419 15.498 10.978 15.518C10.537 15.538 10.175 15.175 9.451 14.451L8 13"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <p class="text-base text-white">
+                    {{ 'association.benefits.point1' | translate }}
+                  </p>
+                </li>
+
+                <li class="flex items-center space-x-4">
+                  <div class="flex-shrink-0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M12.0001 21C14.0823 21 16.1001 20.278 17.7096 18.957C19.3192 17.6361 20.4209 15.7979 20.8271 13.7557C21.2333 11.7136 20.9188 9.5937 19.9373 7.75737C18.9557 5.92104 17.3678 4.48187 15.4441 3.68506C13.5204 2.88825 11.3799 2.78311 9.38739 3.38756C7.39486 3.992 5.67355 5.26863 4.51675 6.99992C3.35996 8.73121 2.83925 10.81 3.04336 12.8822C3.24746 14.9544 4.16375 16.8917 5.63609 18.364"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round" />
+                      <path
+                        d="M16 10L12.402 14.318C11.747 15.104 11.419 15.498 10.978 15.518C10.537 15.538 10.175 15.175 9.451 14.451L8 13"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <p class="text-base text-white">{{ 'association.benefits.point2' | translate }}</p>
+                </li>
+
+                <li class="flex items-center space-x-4">
+                  <div class="flex-shrink-0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M12.0001 21C14.0823 21 16.1001 20.278 17.7096 18.957C19.3192 17.6361 20.4209 15.7979 20.8271 13.7557C21.2333 11.7136 20.9188 9.5937 19.9373 7.75737C18.9557 5.92104 17.3678 4.48187 15.4441 3.68506C13.5204 2.88825 11.3799 2.78311 9.38739 3.38756C7.39486 3.992 5.67355 5.26863 4.51675 6.99992C3.35996 8.73121 2.83925 10.81 3.04336 12.8822C3.24746 14.9544 4.16375 16.8917 5.63609 18.364"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round" />
+                      <path
+                        d="M16 10L12.402 14.318C11.747 15.104 11.419 15.498 10.978 15.518C10.537 15.538 10.175 15.175 9.451 14.451L8 13"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <p class="text-base text-white">{{ 'association.benefits.point3' | translate }}</p>
+                </li>
+              </ul>
+            </app-success-card>
+
+            <img src="assets/illustrations/associate.png" alt="Illustration" class="absolute bottom-0 w-[350px]" />
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="submissionError" class="mt-4 text-center text-red-500">{{ submissionError }}</div>
+    </form>
+  </ng-container>
+
+  <div *ngIf="submissionSuccess" class="mx-auto w-full max-w-3xl rounded-2xl shadow-lg">
+    <div class="w-full rounded-2xl bg-white p-12 text-center">
+      <svg-icon src="assets/icons/internal/success.svg" [svgClass]="'h-[95px] w-[95px] mx-auto mb-8'"> </svg-icon>
+      <h2 class="mb-6 text-2xl font-bold text-gray-800 md:text-[42px]">
+        {{ 'association.success.title' | translate }}
+      </h2>
+      <p class="text-primary mb-12 text-sm md:text-[18px]">
+        {{ 'association.success.subtitle' | translate }}
+      </p>
+      <div class="flex flex-col space-y-4 px-8 md:flex-row md:space-x-4 md:space-y-0 md:px-28">
+        <button
+          [routerLink]="['/']"
+          class="text-primary w-full cursor-pointer rounded-lg bg-yellow-400 p-3 text-base font-semibold hover:bg-yellow-500 focus:outline-none focus:ring focus:ring-yellow-300">
+          {{ 'association.success.homeButton' | translate }}
+        </button>
+        <button
+          [routerLink]="['/help']"
+          class="border-primary text-primary w-full cursor-pointer rounded-lg border bg-transparent p-3 font-semibold hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-200">
+          {{ 'association.success.helpButton' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

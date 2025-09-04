@@ -1,0 +1,29 @@
+<div
+  class="hero-container relative flex h-screen min-h-[600px] flex-col items-center justify-center overflow-hidden p-8 pt-20 text-white sm:pt-0">
+  <div class="bg-pattern-layer absolute inset-0 opacity-50"></div>
+  <div class="bg-pattern-right absolute inset-0 right-0 opacity-50"></div>
+
+  <div class="hero-content relative z-20 mx-auto max-w-[900px] text-center">
+    <h1 class="mb-4 text-[48px] font-bold leading-[47px] md:text-5xl">
+      Help Us Reach More Organizations <span class="text-amber-400">Across Guinea</span>
+    </h1>
+    <p class="description mx-auto mb-8 max-w-2xl text-base leading-snug text-white/80 md:text-lg">
+      Support the digital resilience of local organizations by spreading awareness of free cybersecurity diagnostics
+      offered by Samory Mon Aide Cyber.
+    </p>
+    <div class="button-group flex flex-wrap justify-center gap-4">
+      <app-button full impact="light" tone="primary" shape="rounded" size="large">
+        Share This Page
+        <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.5 7L11.5 0V4C4.5 5 1.5 10 0.5 15C3 11.5 6.5 9.9 11.5 9.9V14L18.5 7Z" fill="#230448" />
+        </svg>
+      </app-button>
+    </div>
+  </div>
+
+  <button class="fab-btn absolute bottom-6 right-6 z-40 h-[68px] w-[68px] rounded-full text-center">
+    <svg-icon src="../../../../../assets/icons/internal/chat.svg" [svgClass]="'mx-auto h-8 w-8'"> </svg-icon>
+  </button>
+</div>
+<app-promo-tab></app-promo-tab>
+<section class="relative w-full bg-white py-16 px-6 md:px-12"></section>

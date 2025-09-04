@@ -1,0 +1,92 @@
+<div>
+  <div class="min-h-screen p-2 font-sans">
+    @if (isLoading()) {
+    <div class="loading-state">
+      <p>Loading dashboard data...</p>
+    </div>
+    } @else if (hasError()) {
+    <div class="error-state">
+      <p>Failed to load dashboard data. Please try again later.</p>
+    </div>
+    } @else if (overviewData()) {
+    <div class="mb-8 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
+      <app-cyber-stats-card
+        label="cyber-dashboard.DIAGNOSTICS_COMPLETED"
+        [value]="overviewData()?.['Accepted Offers']||0"
+        [inProgress]="false"
+        icon="submit"></app-cyber-stats-card>
+      <app-cyber-stats-card
+        label="cyber-dashboard.SUBMITTED_DIAGNOSTICS"
+        [value]="overviewData()?.['Submitted Reports']||0"
+        [inProgress]="false"
+        icon="offer"></app-cyber-stats-card>
+      <app-cyber-stats-card
+        label="cyber-dashboard.ONGOING_DIAGNOSTICS"
+        [value]="overviewData()?.['Offers Made']||0"
+        [inProgress]="true"
+        icon="reject"></app-cyber-stats-card>
+      <app-cyber-stats-card
+        label="cyber-dashboard.APPLICATIONS_PENDING"
+        [value]="overviewData()?.['Rejected Offers']||0"
+        [inProgress]="false"
+        icon="accept"></app-cyber-stats-card>
+    </div>
+    }
+
+    <div class="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div class="lg:col-span-2">
+        <div class="my-4">
+          <app-area-stacked-chart
+            [chartData]="stackedAreaChartData()"
+            [chartTitle]="'Diagnostics Status'"
+            [showXAxisLabel]="false"
+            [filterOptions]="filterOptions"
+            [gradient]="true"
+            [colorScheme]="{ domain: ['#ed63589c', '#00a06266'] }"
+            [width]="670"
+            [height]="400">
+          </app-area-stacked-chart>
+        </div>
+
+        <app-pending-table></app-pending-table>
+      </div>
+      <div>
+        <div class="min-h-auto flex items-center justify-center bg-gray-100 p-2">
+          <app-card-shadow variant="success">
+            <div class="flex w-full max-w-md flex-col items-start gap-2 p-1 text-white">
+              <div class="flex flex-col gap-2">
+                <h2 class="text-lg font-bold">Not ready to jump in just yet?</h2>
+                <p class="text-sm leading-relaxed">
+                  Start with a test diagnosis to explore the process—no pressure, no commitment.
+                </p>
+              </div>
+              <button
+                class="text-primary flex items-center gap-2 rounded-xl bg-white py-2 px-2 text-sm font-bold shadow-xl transition-transform duration-300 hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    d="M10 2a8 8 0 108 8 8 8 0 00-8-8zm4.5 9h-3v3a1 1 0 01-2 0v-3h-3a1 1 0 010-2h3v-3a1 1 0 012 0v3h3a1 1 0 010 2z"
+                    clip-rule="evenodd" />
+                </svg>
+                Try A Test Diagnosis
+              </button>
+            </div>
+          </app-card-shadow>
+        </div>
+        <app-card-ui-list
+          [title]="'Recent Messages'"
+          (ctaClick)="onCtaClick('messages')"
+          [items]="messages()"
+          [cardClass]="'lg:col-span-1 my-2 bg-white'">
+        </app-card-ui-list>
+        <app-card-ui-list
+          [title]="'Recent Notifications'"
+          (ctaClick)="onCtaClick('messages')"
+          [items]="notifications()"
+          [cardClass]="'lg:col-span-1 my-2 bg-white'">
+        </app-card-ui-list>
+      </div>
+    </div>
+
+    <app-diagnostics-table></app-diagnostics-table>
+  </div>
+</div>

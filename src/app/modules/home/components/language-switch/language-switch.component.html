@@ -1,0 +1,14 @@
+<div
+  class="lang-switcher-container"
+  [ngClass]="{
+    'is-home': isHomePage,
+    'is-not-home': !isHomePage
+  }">
+  <button class="lang-circle fr-circle shadow-md" [class.active]="activeLang === 'fr'" (click)="changeLanguage('fr')">
+    FR
+  </button>
+
+  <button class="lang-circle en-circle shadow-md" [class.active]="activeLang === 'en'" (click)="changeLanguage('en')">
+    EN
+  </button>
+</div>

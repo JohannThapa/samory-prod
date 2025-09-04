@@ -1,0 +1,19 @@
+<section class="container mx-auto px-6 py-16">
+  <h2 class="text-primary mb-6 text-2xl font-bold md:text-[28px]">Top / Recent Help Topics</h2>
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <a
+      *ngFor="let topic of topics"
+      [href]="topic.link"
+      class="text-primary flex items-center justify-between rounded-lg bg-white p-6 transition-shadow duration-300">
+      <span class="px-16 text-[18px] font-semibold">{{ topic.title }}</span>
+      <svg
+        class="text-primary h-8 w-8"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</section>

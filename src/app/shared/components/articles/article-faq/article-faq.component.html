@@ -1,0 +1,23 @@
+<div class="mt-12 rounded-2xl bg-purple-50 p-6 md:p-12">
+  <h2 class="text-success mb-8 text-3xl font-bold md:text-4xl">
+    {{ 'helper.faq.title' | translate }}
+  </h2>
+  <div *ngFor="let faq of faqs; let i = index" class="border-b border-gray-300 py-6">
+    <button
+      (click)="toggle(i)"
+      class="text-primary flex w-full justify-between text-left text-xl font-semibold transition-colors duration-200 hover:text-purple-600">
+      {{ faq.question }}
+      <span class="transform transition-transform duration-300" [ngClass]="{ 'rotate-45': openIndex === i }">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-primary h-6 w-6">
+          <path
+            fill-rule="evenodd"
+            d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z"
+            clip-rule="evenodd" />
+        </svg>
+      </span>
+    </button>
+    <div [@collapse] *ngIf="openIndex === i" class="text-primary mt-4 font-normal leading-relaxed">
+      <p>{{ faq.answer }}</p>
+    </div>
+  </div>
+</div>

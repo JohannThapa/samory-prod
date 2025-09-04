@@ -1,0 +1,13 @@
+:host {
+    display: block;
+  }
+  
+  svg {
+    fill: currentColor;
+  }
+
+
+  input{
+    border: 0;
+  }
+  

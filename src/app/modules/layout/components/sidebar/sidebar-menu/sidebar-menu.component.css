@@ -1,0 +1,15 @@
+.menu-active{
+    background: linear-gradient(90deg, rgba(0, 160, 98, 0.2) 0%, #00A062 54.33%, rgba(0, 160, 98, 0.2) 100%);
+    border: 1px solid #FFFFFF33;
+    color: white;
+}
+.menu-active a.enabled-link{
+    color: white !important;
+}
+
+.hoverable-menu:hover{
+    background: linear-gradient(90deg, rgba(0, 160, 98, 0.2) 0%, #00a063ad 54.33%, rgba(0, 160, 98, 0.2) 100%);
+    border: 1px solid #ffffff10;
+    color: rgba(35, 4, 72, 1) !important;
+
+}

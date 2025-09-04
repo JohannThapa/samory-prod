@@ -1,0 +1,88 @@
+<div class="p-4 sm:p-6 lg:p-8">
+  <div class="mb-4 flex justify-between">
+    <div class="inline-block">
+      <h3 class="text-foreground font-semibold">Buttons Example</h3>
+      <div class="text-muted-foreground space-x-1 text-xs font-medium">
+        <a href="" class="hover:text-primary">All Buttons:</a>
+        <span class="text-foreground">8</span>
+      </div>
+    </div>
+    <div class="inline-block space-x-4"></div>
+  </div>
+
+  <div class="border-muted/20 bg-background flex w-full flex-col rounded-xl border p-4 sm:p-6 lg:p-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
+      <div class="flex flex-col items-center space-y-4">
+        <h2 class="text-foreground text-2xl font-bold">Simple Buttons</h2>
+        <app-button
+          tone="primary"
+          impact="bold"
+          size="medium"
+          shape="rounded"
+          (buttonClick)="handleButtonPrimaryClick()">
+          <span>Primary Button</span>
+        </app-button>
+        <app-button tone="danger" impact="light" size="large" shape="rounded" (buttonClick)="handleButtonDangerClick()">
+          <span>Large Outline Button</span>
+        </app-button>
+        <app-button tone="success" impact="bold" size="small" shape="pill" (buttonClick)="handleButtonSuccessClick()">
+          <span>Small Button</span>
+        </app-button>
+        <app-button
+          tone="light"
+          impact="light"
+          size="medium"
+          shadow="none"
+          [full]="true"
+          (buttonClick)="handleButtonWarningClick()">
+          <span>Default Button</span>
+        </app-button>
+      </div>
+
+      <div class="flex flex-col items-center space-y-4">
+        <h2 class="text-foreground text-2xl font-bold">Icon Buttons</h2>
+        <app-icon-button
+          tone="primary"
+          impact="bold"
+          size="medium"
+          shape="rounded"
+          iconSrc="assets/icons/heroicons/solid/chevron-double-left.svg"
+          iconPosition="left"
+          (buttonClick)="handlePrimaryClick()">
+          <span>Primary Icon Button</span>
+        </app-icon-button>
+        <app-icon-button
+          tone="success"
+          impact="light"
+          size="large"
+          shape="rounded"
+          iconSrc="assets/icons/heroicons/solid/chevron-right.svg"
+          iconPosition="right"
+          (buttonClick)="handleSendClick()">
+          <span>Large Right Icon Button</span>
+        </app-icon-button>
+        <app-icon-button
+          tone="danger"
+          impact="bold"
+          size="small"
+          shape="rounded"
+          iconSrc="assets/icons/heroicons/solid/play.svg"
+          iconPosition="left"
+          (buttonClick)="handleDangerClick()">
+        </app-icon-button>
+        <app-icon-button
+          tone="info"
+          impact="light"
+          size="medium"
+          shape="rounded"
+          shadow="large"
+          iconSrc="assets/icons/heroicons/outline/information-circle.svg"
+          iconPosition="left"
+          [full]="true"
+          shadow="medium">
+          <span>Shadow Button</span>
+        </app-icon-button>
+      </div>
+    </div>
+  </div>
+</div>

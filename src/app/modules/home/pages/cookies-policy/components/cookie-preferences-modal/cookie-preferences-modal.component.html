@@ -1,0 +1,93 @@
+<div *ngIf="isOpen" class="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-50">
+  <div class="w-full max-w-2xl overflow-hidden rounded-3xl bg-white p-6 shadow-2xl transition-all duration-300 md:p-8">
+    <div class="mb-4 flex items-center space-x-4">
+      <svg-icon src="assets/icons/internal/cookie-title.svg" [svgClass]="'h-8 w-8 text-green-600'"></svg-icon>
+      <h2 class="text-primary text-xl font-bold">{{ 'cookieModal.title' | translate }}</h2>
+    </div>
+    <p class="text-primary text-base">{{ 'cookieModal.description' | translate }}</p>
+
+    <form [formGroup]="cookieForm" class="text-primary mt-6">
+      <div class="mb-4">
+        <div class="flex justify-between">
+          <h3 class="text-primary text-[18px] font-bold">{{ 'cookieModal.strictlyNecessary' | translate }}</h3>
+          <span class="text-[18px] font-semibold text-green-600">{{ 'cookieModal.alwaysActive' | translate }}</span>
+        </div>
+        <p class="text-primary text-base">
+          Required for core functionality like logins and form security. Cannot be turned off.
+        </p>
+      </div>
+
+      <div class="border-t border-gray-200 py-2">
+        <div class="flex cursor-pointer items-center justify-between" (click)="toggleSection('analytics')">
+          <div class="flex items-center space-x-2">
+            <svg-icon
+              src="assets/icons/internal/chevron_down.svg"
+              [svgClass]="
+                'h-4 w-4 transform transition-transform' + (isAnalyticsExpanded ? ' rotate-90' : ' rotate-0')
+              ">
+            </svg-icon>
+            <h3 class="text-[18px] font-semibold">{{ 'cookieModal.analytics' | translate }}</h3>
+          </div>
+          <app-toggle-switch formControlName="analytics" [size]="'20px'"></app-toggle-switch>
+        </div>
+        <div *ngIf="isAnalyticsExpanded" class="mt-2 text-sm text-gray-500">
+          {{ 'cookieModal.analyticsDescription' | translate }}
+        </div>
+      </div>
+
+      <div class="border-t border-gray-200 py-2">
+        <div class="flex cursor-pointer items-center justify-between" (click)="toggleSection('preferences')">
+          <div class="flex items-center space-x-2">
+            <svg-icon
+              src="assets/icons/internal/chevron_down.svg"
+              [svgClass]="
+                'h-4 w-4 transform transition-transform' + (isPreferencesExpanded ? ' rotate-90' : ' rotate-0')
+              ">
+            </svg-icon>
+            <h3 class="text-[18px] font-semibold">{{ 'cookieModal.preferences' | translate }}</h3>
+          </div>
+          <app-toggle-switch formControlName="preferences" [size]="'20px'"></app-toggle-switch>
+        </div>
+        <div *ngIf="isPreferencesExpanded" class="mt-2 text-sm text-gray-500">
+          {{ 'cookieModal.preferencesDescription' | translate }}
+        </div>
+      </div>
+
+      <div class="border-t border-gray-200 py-2">
+        <div class="flex cursor-pointer items-center justify-between" (click)="toggleSection('marketing')">
+          <div class="flex items-center space-x-2">
+            <svg-icon
+              src="assets/icons/internal/chevron_down.svg"
+              [svgClass]="
+                'h-4 w-4 transform transition-transform' + (isMarketingExpanded ? ' rotate-90' : ' rotate-0')
+              ">
+            </svg-icon>
+            <h3 class="text-[18px] font-semibold">{{ 'cookieModal.marketing' | translate }}</h3>
+          </div>
+          <app-toggle-switch formControlName="marketing" [size]="'20px'"></app-toggle-switch>
+        </div>
+        <div *ngIf="isMarketingExpanded" class="mt-2 text-sm text-gray-500">
+          {{ 'cookieModal.marketingDescription' | translate }}
+        </div>
+      </div>
+    </form>
+
+    <div class="mt-6 flex flex-col space-y-4 text-[16px] md:flex-row md:space-x-4 md:space-y-0">
+      <button
+        (click)="rejectAll()"
+        class="flex-1 rounded-xl border border-gray-400 p-3 text-base font-semibold text-gray-700 hover:bg-gray-100">
+        {{ 'cookieModal.rejectAll' | translate }}
+      </button>
+      <button
+        (click)="savePreferences()"
+        class="flex-1 rounded-xl bg-green-600 p-3 text-base font-semibold text-white hover:bg-green-700">
+        {{ 'cookieModal.save' | translate }}
+      </button>
+      <button
+        (click)="acceptAll()"
+        class="flex-1 rounded-xl bg-purple-700 p-3 text-base font-semibold text-white hover:bg-purple-800">
+        {{ 'cookieModal.acceptAll' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

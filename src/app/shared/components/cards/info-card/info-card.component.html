@@ -1,0 +1,18 @@
+<div
+  class="info-card group"
+  [ngClass]="{
+    'is-primary-card': isPrimary
+  }">
+  <div class="icon-container">
+    <svg-icon [src]="iconPath" [svgClass]="'h-8 w-8 text-primary group-[.is-primary-card]:text-white'"> </svg-icon>
+  </div>
+  <div class="flex h-full flex-col justify-end">
+    <p
+      class="text-primary group-[.is-primary-card]:text-white text-[80px] font-semibold transition-colors duration-300">
+      {{ value }}
+    </p>
+    <p class="text-secondary group-[.is-primary-card]:text-white text-lg transition-colors duration-300">
+      {{ description }}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+:host {
+    display: block;
+}
+
+.cyber-image img{
+    min-width: 555px;
+    width: 555px;
+}

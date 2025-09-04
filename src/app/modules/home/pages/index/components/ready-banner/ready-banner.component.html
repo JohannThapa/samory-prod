@@ -1,0 +1,58 @@
+<section
+  class="relative mx-4 mt-12 mb-12 overflow-hidden rounded-3xl bg-[#330066] p-8 text-white shadow-lg md:mx-8 md:p-12 lg:mx-16 lg:p-16">
+  <!-- Background pattern to create a subtle starry effect -->
+  <div
+    class="absolute inset-0 bg-repeat opacity-50"
+    style="
+      background-image: url('data:image/svg+xml;utf8,<svg width=&quot;4&quot; height=&quot;4&quot; viewBox=&quot;0 0 4 4&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;2&quot; cy=&quot;2&quot; r=&quot;0.5&quot; fill=&quot;rgba(255,255,255,0.2)&quot; /></svg>');
+    "></div>
+
+  <div class="relative z-10 flex flex-col items-center text-center">
+    <!-- Title -->
+    <h2 class="text-warning gradient-warning mb-4 text-3xl font-bold md:text-[42px]">
+      Ready to Strengthen Your Cybersecurity?
+    </h2>
+
+    <!-- Subtitle -->
+    <p class="mb-8 max-w-3xl text-base font-[500] text-gray-200 md:text-[23px]">
+      Whether you’re an NGO, SME, or local institution — support is just a few clicks away. It's free, secure, and
+      guided by experts you can trust.
+    </p>
+
+    <!-- Checklist -->
+    <div class="mb-8 flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-8">
+      <div class="flex items-center space-x-2">
+        <!-- Checkmark SVG Icon -->
+        <!-- <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+        class="text-green-400 w-5 h-5 flex-shrink-0">
+        <path fill="currentColor"
+          d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
+      </svg> -->
+        <svg-icon src="assets/icons/internal/tick.svg" [svgClass]="'text-success w-5 h-5 p-0 rounded-full '">
+        </svg-icon>
+        <span class="text-base font-medium text-white">100% free</span>
+      </div>
+      <div class="flex items-center space-x-2 border-l border-white pl-4">
+        <span class="text-base font-medium text-white">Confidential</span>
+      </div>
+      <div class="flex items-center space-x-2 border-l border-white pl-4">
+        <span class="text-base font-medium text-white">Quick setup</span>
+      </div>
+    </div>
+
+    <!-- Call to Action Buttons -->
+    <div class="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+      <!-- Primary Button: "Become a Cyber Helper" -->
+      <button
+        class="w-full rounded-2xl bg-white py-3 px-6 text-base font-semibold text-[#330066] shadow-lg transition-colors hover:bg-gray-100 sm:w-auto md:text-lg">
+        Become a Cyber Helper
+      </button>
+
+      <!-- Secondary Button: "Request Free Diagnostic" -->
+      <button
+        class="w-full rounded-2xl border-2 border-white py-3 px-6 text-base font-semibold text-white shadow-lg transition-colors hover:bg-white hover:text-[#330066] sm:w-auto md:text-lg">
+        Request Free Diagnostic
+      </button>
+    </div>
+  </div>
+</section>

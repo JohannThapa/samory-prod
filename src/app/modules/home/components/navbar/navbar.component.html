@@ -1,0 +1,86 @@
+<header class="fixed left-0 right-0 top-0 z-50">
+  <div
+    class="px-18 relative mx-auto flex items-center justify-between py-4 transition-colors duration-300"
+    [ngClass]="{
+      'bg-transparent': isHomePage && !scrolled,
+      ' nav-glass text-primary shadow-md': isHomePage && scrolled,
+      'nav-glass text-primary bg-white/95 shadow-none': !isHomePage
+    }">
+    <div class="hidden flex-1 items-center space-x-6 md:flex">
+      <app-home-navbar-menu [isScrolled]="scrolled" [isHomePage]="isHomePage"></app-home-navbar-menu>
+    </div>
+
+    <div class="md:hidden">
+      <button
+        (click)="menuService.showMobileMenu = true"
+        class="text-primary rounded-full bg-white p-2 focus:outline-none">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+    <div class="absolute left-1/2 -bottom-[40px] z-30 -translate-x-1/2">
+      <a routerLink="/" class="block">
+        @if(!(isHomePage)){
+        <img src="../../../../../assets/logos/logo-1.png" alt="Logo" class="h-28 w-auto rounded-full bg-transparent" />
+        } @else {
+        <img src="../../../../../assets/logos/logo.png" alt="Logo" class="h-28 w-auto rounded-full bg-transparent" />
+        }
+      </a>
+    </div>
+
+    <div class="flex items-center space-x-4">
+      <div class="hidden items-center space-x-1 rounded-full p-1 text-sm font-semibold md:flex">
+        <app-language-switch [isHomePage]="isHomePage"></app-language-switch>
+      </div>
+
+      <div class="hidden items-center space-x-3 md:flex">
+        <button
+          class="cursor-pointer rounded-full border px-5 py-2.5 text-sm font-semibold transition-colors duration-200"
+          routerLink="/auth/sign-in"
+          [ngClass]="{
+            'text-primary border-primary/40 bg-white': scrolled,
+            'bg-primary-2 border-[#230448]/10 text-white': !scrolled
+          }">
+          {{ 'NAV_LOGIN_SIGNUP' | translate }}
+        </button>
+
+        <button
+          class="rounded-full border px-5 py-2.5 text-sm font-semibold transition-colors duration-200"
+          [ngClass]="{
+            'border-primary/40 bg-primary-2 text-white': scrolled,
+            'text-primary border-primary bg-white': !scrolled
+          }">
+          {{ 'NAV_REQUEST_DIAGNOSTIC' | translate }}
+        </button>
+      </div>
+
+      <div
+        class="flex items-center space-x-1 rounded-full border p-1 text-sm font-semibold transition-colors duration-200 md:hidden"
+        [ngClass]="{
+          'border-white/40': isHomePage,
+          'border-[#230448]/30': !isHomePage
+        }">
+        <app-language-switch [isHomePage]="isHomePage"></app-language-switch>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative h-[45px]">
+    <svg
+      class="pointer-events-none absolute inset-0 -z-10 h-[45px] w-full"
+      viewBox="0 0 1438 45"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true">
+      <path
+        d="M0.5 0.5H612.425C623.587 0.5 634.527 3.61342 644.016 9.49027L685.064 34.9118C704.857 47.1698 729.954 46.8715 749.45 34.1467L786.054 10.2553C795.807 3.88961 807.202 0.5 818.848 0.5H1438"
+        [attr.stroke]="strokeColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        fill="none" />
+    </svg>
+  </div>
+
+  <app-home-navbar-mobile></app-home-navbar-mobile>
+</header>

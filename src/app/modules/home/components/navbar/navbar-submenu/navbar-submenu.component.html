@@ -1,0 +1,17 @@
+<ul class="absolute top-full left-0 z-50 mt-2 min-w-[200px] rounded-lg bg-white shadow-xl">
+  @for (item of submenu; track item.label) {
+  <li>
+    <a
+      [routerLink]="item.route"
+      routerLinkActive="bg-purple-100 text-purple-700 font-semibold"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+      {{ item.label }}
+    </a>
+  </li>
+  } @empty {
+  <li>
+    <span class="block px-4 py-2 text-sm text-gray-500">No menu items found.</span>
+  </li>
+  }
+</ul>

@@ -1,0 +1,19 @@
+.chart-container{
+    border: 1px solid #23044833;
+    border-radius: 20px;
+    background: white;
+  }
+  select.filter-date{
+    background: #F8F4FE !important;
+    border: 1px solid #23044833 !important;
+    color: rgba(35, 4, 72, 1) !important;
+  }
+  .filter-date svg{
+    color: rgba(35, 4, 72, 1) !important;
+  }
+  :host ::ng-deep .ngx-charts-area-series .chart-area {
+    opacity: 0.5;
+  }
+  :host ::ng-deep .line-series path {
+    stroke-width: 2px !important;
+  }

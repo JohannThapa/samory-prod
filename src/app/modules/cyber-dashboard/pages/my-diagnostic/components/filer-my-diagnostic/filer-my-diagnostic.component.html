@@ -1,0 +1,53 @@
+<div class="flex flex-col items-center justify-between p-4 md:flex-row">
+  <div class="flex w-full flex-1 flex-col items-center space-y-4 md:w-auto md:flex-row md:space-y-0 md:space-x-4">
+    <div class="flex w-full items-center space-x-2 md:w-auto">
+      <span class="font-medium text-[#230448]">Filter:</span>
+      <select
+        [(ngModel)]="selectedStatus"
+        (change)="onFilterApply()"
+        class="form-select block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm">
+        <option value="">Status</option>
+        <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+      </select>
+    </div>
+    <div class="flex w-full items-center space-x-2 md:w-auto">
+      <select
+        [(ngModel)]="selectedType"
+        (change)="onFilterApply()"
+        class="form-select block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm">
+        <option value="">Diagnostic Type</option>
+        <option *ngFor="let type of diagnosticTypes" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mt-4 flex items-center space-x-2 md:mt-0">
+    <span class="font-medium text-[#230448]">View</span>
+    <button
+      type="button"
+      (click)="viewChange.emit('list')"
+      [class.bg-gray-200]="viewMode === 'list'"
+      [ngClass]="viewMode === 'list' ? 'text-primary border-primary' : 'text-gray-400'"
+      class="rounded-l-md border border-[#23044833] bg-white px-2 py-1 hover:rounded-l-lg hover:bg-gray-100"
+      aria-label="List view">
+      <svg-icon
+        src="assets/icons/internal/list-rounded.svg"
+        [svgClass]="viewMode === 'list' ? 'text-primary' : 'text-gray-400'"
+        class="h-6 w-6">
+      </svg-icon>
+    </button>
+    <button
+      type="button"
+      (click)="viewChange.emit('grid')"
+      [class.bg-gray-200]="viewMode === 'grid'"
+      [ngClass]="viewMode === 'grid' ? 'text-primary border-primary' : 'text-gray-400'"
+      class="-ml-2 rounded-r-md border border-[#23044833] bg-white px-2 py-1 hover:rounded-r-lg hover:bg-gray-100"
+      aria-label="Grid view">
+      <svg-icon
+        src="assets/icons/internal/table-filled.svg"
+        [svgClass]="viewMode === 'grid' ? 'text-primary' : 'text-gray-400'"
+        class="h-6 w-6">
+      </svg-icon>
+    </button>
+  </div>
+</div>

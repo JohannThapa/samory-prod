@@ -1,0 +1,94 @@
+<div class="mx-auto grid max-w-6xl gap-8 shadow-lg md:grid-cols-2">
+  <div class="rounded-tl-4xl rounded-bl-4xl border bg-[#F8F4FE] p-6 md:p-8">
+    <h2 class="text-success mb-6 text-xl font-semibold md:text-3xl">CONTACT INFO</h2>
+    <div class="space-y-6">
+      <div class="form-border-color border-b pb-4">
+        <div class="mb-1 flex items-center gap-2 text-sm font-medium text-gray-500">
+          <svg-icon src="assets/icons/heroicons/solid/envelope.svg" [svgClass]="'h-5 w-5 text-success'"> </svg-icon>
+          <span>Email</span>
+        </div>
+        <p class="text-primary text-base font-semibold md:text-lg">support@samorycyber.gn</p>
+      </div>
+
+      <div class="form-border-color border-b pb-4">
+        <div class="mb-1 flex items-center gap-2 text-sm font-medium text-gray-500">
+          <svg-icon src="assets/icons/heroicons/solid/phone.svg" [svgClass]="'h-5 w-5 text-success'"> </svg-icon>
+          <span>Phone</span>
+        </div>
+        <p class="text-primary text-base font-semibold md:text-lg">+224 600 123 456</p>
+      </div>
+
+      <div class="pb-4">
+        <div class="mb-1 flex items-center gap-2 text-sm font-medium text-gray-500">
+          <svg-icon src="assets/icons/heroicons/solid/map-pin.svg" [svgClass]="'h-5 w-5 text-success'"> </svg-icon>
+          <span>Address</span>
+        </div>
+        <p class="text-primary text-base font-semibold md:text-lg">Quartier Kipé, Conakry, République de Guinée</p>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <img src="assets/images/contact-map.png" alt="map" class="rounded-xl shadow" />
+    </div>
+  </div>
+
+  <form
+    [formGroup]="contactForm"
+    (ngSubmit)="onSubmit()"
+    class="rounded-tr-4xl rounded-br-4xl -ml-10 space-y-4 bg-white p-6">
+    <h2 class="text-success mb-8 mt-4 text-xl font-semibold md:text-xl">
+      Get in Touch with the Samory Mon Aide Cyber Team
+    </h2>
+    <div class="form-field-container">
+      <label class="form-label">Name *</label>
+      <input type="text" formControlName="name" placeholder="e.g. Fatoumata Diallo" class="form-input" />
+      <p *ngIf="f['name'].touched && f['name'].invalid" class="text-sm text-red-500">
+        Name is required (min 3 characters).
+      </p>
+    </div>
+    <div class="form-field-container">
+      <label class="form-label">Email *</label>
+      <input type="email" formControlName="email" placeholder="e.g.fatoumata.diallo@example.com" class="form-input" />
+      <p *ngIf="f['email'].touched && f['email'].invalid" class="text-sm text-red-500">Please enter a valid email.</p>
+    </div>
+
+    <div class="form-field-container">
+      <label class="form-label">Message *</label>
+      <textarea
+        rows="5"
+        formControlName="message"
+        placeholder="Write your message here..."
+        class="form-textarea"></textarea>
+      <p *ngIf="f['message'].touched && f['message'].invalid" class="text-sm text-red-500">
+        Message is required (min 10 characters).
+      </p>
+    </div>
+    <label class="flex cursor-pointer items-center space-x-2">
+      <input type="checkbox" formControlName="consent" class="peer hidden" />
+      <div
+        class="peer-checked:bg-primary peer-checked:border-primary-2 relative h-5 w-5 rounded border-2 border-gray-400">
+        <svg
+          class="absolute inset-0 m-auto h-4 w-4 text-white opacity-0 transition-opacity duration-200 peer-checked:opacity-100"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <span class="text-primary text-base">I agree to the use of my data for this support request</span>
+      <p *ngIf="f['consent'].touched && f['consent'].invalid" class="text-sm text-red-500">
+        You must agree before submitting.
+      </p>
+    </label>
+
+    <div *ngIf="submissionError" class="text-center text-red-500">{{ submissionError }}</div>
+
+    <button
+      type="submit"
+      class="bg-primary w-full rounded-lg p-3 font-semibold text-white hover:bg-purple-800"
+      [disabled]="contactForm.invalid || isLoading">
+      <ng-container *ngIf="!isLoading">Send Message</ng-container>
+      <ng-container *ngIf="isLoading">Submitting...</ng-container>
+    </button>
+  </form>
+</div>

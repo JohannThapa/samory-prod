@@ -1,0 +1,262 @@
+<!-- Overlay -->
+<div *ngIf="open()" @overlayFade class="fixed inset-0 z-[60]">
+  <button class="absolute inset-0 bg-black/40" (click)="close()" aria-label="Close chat"></button>
+</div>
+
+<!-- Card -->
+<div *ngIf="open()" @cardSlide class="fixed bottom-24 right-10 z-[70] w-[420px] max-w-[95vw] select-none">
+  <!-- WELCOME VIEW -->
+  <section *ngIf="view() === 'welcome'" class="chat-gradient rounded-t-3xl shadow-2xl ring-1 ring-black/5">
+    <div class="rounded-t-3xl bg-gradient-to-b from-[#1DBE7B] to-[#149E74] p-6 text-white">
+      <div class="flex items-center gap-3">
+        <div class="flex -space-x-2">
+          <img class="h-9 w-9 rounded-full ring-2 ring-white/60" src="https://i.pravatar.cc/36?img=1" alt />
+          <img class="h-9 w-9 rounded-full ring-2 ring-white/60" src="https://i.pravatar.cc/36?img=2" alt />
+          <img class="h-9 w-9 rounded-full ring-2 ring-white/60" src="https://i.pravatar.cc/36?img=3" alt />
+        </div>
+      </div>
+      <h3 class="mt-4 text-[26px] font-semibold">{{ 'CHATBOT.HELLO' | translate }}</h3>
+      <p class="text-[26px] leading-6 opacity-95">{{ 'CHATBOT.HOW_CAN_WE_HELP' | translate }}</p>
+
+      <div class="mt-5 grid gap-3">
+        <button
+          class="text-primry flex items-center justify-between rounded-2xl bg-white/95 px-4 py-3 shadow-sm transition hover:bg-white"
+          (click)="backToWelcome()"
+          aria-label="Contact support">
+          <span class="text-primary text-[14px] font-medium">{{ 'CHATBOT.CONTACT_SUPPORT' | translate }}</span>
+          <span class="i">
+            <!-- icon -->
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M7.59375 1.6875C7.36997 1.6875 7.15536 1.77639 6.99713 1.93463C6.83889 2.09286 6.75 2.30747 6.75 2.53125C6.75 2.75503 6.83889 2.96964 6.99713 3.12787C7.15536 3.28611 7.36997 3.375 7.59375 3.375H12.9375C13.3851 3.375 13.8143 3.55279 14.1307 3.86926C14.4472 4.18572 14.625 4.61495 14.625 5.0625V12.9375C14.625 13.3851 14.4472 13.8143 14.1307 14.1307C13.8143 14.4472 13.3851 14.625 12.9375 14.625H7.59375C7.36997 14.625 7.15536 14.7139 6.99713 14.8721C6.83889 15.0304 6.75 15.245 6.75 15.4688C6.75 15.6925 6.83889 15.9071 6.99713 16.0654C7.15536 16.2236 7.36997 16.3125 7.59375 16.3125H12.9375C13.8326 16.3125 14.6911 15.9569 15.324 15.324C15.9569 14.6911 16.3125 13.8326 16.3125 12.9375V5.0625C16.3125 4.16739 15.9569 3.30895 15.324 2.67601C14.6911 2.04308 13.8326 1.6875 12.9375 1.6875H7.59375ZM11.0025 8.40375L8.19 5.59125C8.03005 5.44221 7.8185 5.36107 7.59991 5.36493C7.38132 5.36878 7.17276 5.45734 7.01818 5.61193C6.86359 5.76651 6.77503 5.97507 6.77118 6.19366C6.76732 6.41225 6.84846 6.6238 6.9975 6.78375L8.37 8.15625H1.96875C1.74497 8.15625 1.53036 8.24514 1.37213 8.40338C1.21389 8.56161 1.125 8.77622 1.125 9C1.125 9.22378 1.21389 9.43839 1.37213 9.59662C1.53036 9.75486 1.74497 9.84375 1.96875 9.84375H8.37L6.9975 11.2163C6.9146 11.2935 6.84811 11.3866 6.802 11.4901C6.75588 11.5936 6.73108 11.7054 6.72908 11.8187C6.72709 11.932 6.74793 12.0445 6.79036 12.1495C6.8328 12.2546 6.89596 12.35 6.97608 12.4302C7.0562 12.5103 7.15164 12.5735 7.2567 12.6159C7.36176 12.6583 7.4743 12.6792 7.58759 12.6772C7.70088 12.6752 7.81261 12.6504 7.91611 12.6043C8.0196 12.5581 8.11276 12.4916 8.19 12.4087L11.0025 9.59625C11.1605 9.43805 11.2493 9.22359 11.2493 9Z"
+                fill="#00A062" />
+            </svg>
+          </span>
+        </button>
+
+        <button
+          class="text-primry flex items-center justify-between rounded-2xl bg-white/95 px-4 py-3 shadow-sm transition hover:bg-white"
+          (click)="startChat()"
+          aria-label="Send us a message">
+          <span class="text-primary text-[14px] font-medium">{{ 'CHATBOT.SEND_US_MESSAGE' | translate }}</span>
+          <span class="i">
+            <!-- icon -->
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M2.83452 5.56082C2.61786 3.61582 4.62036 2.18749 6.38952 3.02582L16.3429 7.74082C18.2495 8.64332 18.2495 11.3567 16.3429 12.2592L6.38952 16.975C4.62036 17.8133 2.61869 16.385 2.83452 14.44L3.23452 10.8333H9.99952C10.2205 10.8333 10.4325 10.7455 10.5888 10.5892C10.7451 10.433 10.8329 10.221 10.8329 9.99999C10.8329 9.77898 10.7451 9.56702 10.5888 9.41074C10.4325 9.25446 10.2205 9.16666 9.99952 9.16666H3.23536L2.83452 5.56082Z"
+                fill="#00A062" />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="rounded-b-3xl bg-white px-6 pb-4">
+      <div class="rounded-b-3xl bg-white p-4 shadow-xl">
+        <div class="relative flex items-center">
+          <input
+            [(ngModel)]="query"
+            type="text"
+            placeholder="{{ 'CHATBOT.SEARCH_PLACEHOLDER' | translate }}"
+            class="w-full rounded-3xl border border-[#F8F4FE] bg-[#F8F4FE] py-3 pl-5 pr-12 text-[12px] outline-0 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/60" />
+          <svg
+            class="absolute right-5 h-[18px] w-[18px] text-emerald-500"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+        </div>
+
+        <ul class="mt-5">
+          <li
+            routerLink="/promote-cyber"
+            class="text-primary flex cursor-pointer items-center justify-between py-2 text-[12px] font-medium transition duration-200 hover:text-emerald-500">
+            {{ 'CHATBOT.FAQ1' | translate }}
+            <svg
+              class="h-4 w-4 transform text-[#00A062] transition-transform duration-200"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </li>
+          <li
+            class="text-primary flex cursor-pointer items-center justify-between py-2 text-[12px] font-medium transition duration-200 hover:text-emerald-500">
+            {{ 'CHATBOT.FAQ2' | translate }}
+            <svg
+              class="h-4 w-4 transform text-[#00A062] transition-transform duration-200"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </li>
+          <li
+            class="text-primary flex cursor-pointer items-center justify-between py-2 text-[12px] font-medium transition duration-200 hover:text-emerald-500">
+            {{ 'CHATBOT.FAQ3' | translate }}
+            <svg
+              class="h-4 w-4 transform text-[#00A062] transition-transform duration-200"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </li>
+          <li
+            class="text-primary flex cursor-pointer items-center justify-between py-2 text-[12px] font-medium transition duration-200 hover:text-emerald-500">
+            {{ 'CHATBOT.FAQ4' | translate }}
+            <svg
+              class="h-4 w-4 transform text-[#00A062] transition-transform duration-200"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </li>
+        </ul>
+
+        <!-- Language toggle -->
+        <div class="mt-4 flex items-center gap-2">
+          <span class="text-xs text-neutral-600">{{ 'CHATBOT.LANGUAGE' | translate }}</span>
+          <button class="rounded-full border px-2 py-1 text-xs hover:bg-neutral-50" (click)="changeLang('en')">
+            EN
+          </button>
+          <button class="rounded-full border px-2 py-1 text-xs hover:bg-neutral-50" (click)="changeLang('fr')">
+            FR
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAT VIEW -->
+  <section
+    *ngIf="view() === 'chat'"
+    class="flex h-[520px] flex-col overflow-hidden rounded-3xl bg-white shadow-2xl ring-1 ring-black/5">
+    <header class="flex items-center gap-3 border-b border-neutral-200 px-4 py-3">
+      <button (click)="backToWelcome()" class="rounded-full p-1 hover:bg-neutral-100" aria-label="Back">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18 9 12l6-6" />
+        </svg>
+      </button>
+      <div class="flex -space-x-2">
+        <img class="h-8 w-8 rounded-full ring-2 ring-white" src="https://i.pravatar.cc/32?img=9" alt />
+        <img class="h-8 w-8 rounded-full ring-2 ring-white" src="https://i.pravatar.cc/32?img=7" alt />
+        <img class="h-8 w-8 rounded-full ring-2 ring-white" src="https://i.pravatar.cc/32?img=5" alt />
+      </div>
+      <button (click)="close()" class="ml-auto rounded-full p-1 hover:bg-neutral-100" aria-label="Close">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+    </header>
+
+    <div class="grow space-y-3 overflow-y-auto bg-white p-4">
+      <div class="text-primary ml-1 text-center text-xs font-semibold">
+        {{ 'CHATBOT.AVAILABILITY' | translate }}
+      </div>
+
+      <!-- Suggested assistant templates -->
+      <div class="flex flex-wrap gap-2" *ngIf="conversation().length === 0">
+        <button
+          *ngFor="let tpl of automated"
+          (click)="sendTemplate(tpl)"
+          class="bg-success cursor-pointer rounded-2xl border border-emerald-400 px-3 py-3 text-xs text-white hover:bg-emerald-800">
+          {{ tpl | translate }}
+        </button>
+      </div>
+
+      <!-- Render conversation -->
+      <ng-container *ngFor="let msg of conversation(); trackBy: trackById">
+        <!-- Assistant bubble -->
+        <div
+          *ngIf="msg.role === 'assistant'"
+          class="shadow-xs max-w-[85%] rounded-2xl bg-[#F8F4FE] p-4 text-xs text-[#230448CC]">
+          <ng-container *ngIf="!msg.pending; else pendingTpl">{{ msg.content }}</ng-container>
+        </div>
+
+        <!-- User bubble -->
+        <div *ngIf="msg.role === 'user'" class="flex justify-end">
+          <div class="rounded-2xl bg-[#00A062] px-4 py-3 text-xs text-white shadow">{{ msg.content }}</div>
+        </div>
+      </ng-container>
+
+      <!-- Error banner (non-blocking) -->
+      <div *ngIf="error()" class="rounded-md border border-red-300 bg-red-50 p-2 text-[11px] text-red-700">
+        {{ error() }}
+      </div>
+    </div>
+
+    <form (ngSubmit)="sendMessage()" class="bg-transparent p-6">
+      <div
+        class="focus-within:border-primary focus-within:ring-primary/60 relative rounded-[25px] border border-[#00A062] p-2 focus-within:ring-2">
+        <textarea
+          [(ngModel)]="message"
+          name="message"
+          rows="2"
+          [placeholder]="'CHATBOT.MESSAGE_PLACEHOLDER' | translate"
+          class="max-h-[40px] min-h-[32px] w-full resize-none overflow-y-auto border-0 bg-transparent text-[10px] text-neutral-800 outline-none placeholder:text-neutral-400 focus:outline-none focus:ring-0"></textarea>
+
+        <div class="mt-2 flex items-center gap-2">
+          <button
+            type="button"
+            class="flex h-6 w-6 items-center justify-center text-[#230448B2] hover:text-emerald-500"
+            title="Mood">
+            <svg class="h-[16px] w-[16px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+              <line x1="9" y1="9" x2="9.01" y2="9" />
+              <line x1="15" y1="9" x2="15.01" y2="9" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="flex h-6 w-6 items-center justify-center text-[#230448B2] hover:text-emerald-500"
+            title="Mic">
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M2.75215 4.99998V9.49529C2.75734 9.82401 2.89157 10.1375 3.12586 10.3681C3.36016 10.5988 3.67573 10.728 4.00449 10.728C4.33325 10.728 4.64883 10.5988 4.88312 10.3681C5.11742 10.1375 5.25164 9.82401 5.25684 9.49529L5.2609 3.60311C5.26431 3.32215 5.21191 3.0433 5.10675 2.78275C5.00159 2.52219 4.84576 2.28509 4.64829 2.08521C4.45081 1.88532 4.21562 1.72662 3.95636 1.61831C3.6971 1.51 3.41891 1.45422 3.13793 1.45422C2.85695 1.45422 2.57876 1.51 2.3195 1.61831C2.06023 1.72662 1.82505 1.88532 1.62757 2.08521C1.4301 2.28509 1.27427 2.52219 1.16911 2.78275C1.06395 3.0433 1.01155 3.32215 1.01496 3.60311V9.53498C1.00924 9.93053 1.0822 10.3233 1.22961 10.6904C1.37702 11.0575 1.59594 11.3916 1.87363 11.6733C2.15132 11.9551 2.48225 12.1788 2.84718 12.3315C3.2121 12.4842 3.60375 12.5629 3.99934 12.5629C4.39493 12.5629 4.78657 12.4842 5.15149 12.3315C5.51642 12.1788 5.84735 11.9551 6.12504 11.6733C6.40274 11.3916 6.62165 11.0575 6.76906 10.6904C6.91647 10.3233 6.98943 9.93053 6.98371 9.53498V3.99186"
+                stroke="#230448"
+                stroke-opacity="0.7"
+                stroke-miterlimit="10"
+                stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+
+        <button
+          type="submit"
+          class="hover:bg-primary-foreground absolute bottom-3 right-4 flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500 text-white transition duration-200 disabled:opacity-40"
+          [disabled]="!message.trim() || loading()">
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            [ngClass]="{ 'animate-pulse': loading() }">
+            <g opacity="0.5">
+              <circle cx="15" cy="15" r="15" fill="#00A062" />
+              <path
+                d="M20.7102 14.29L15.7102 9.29002C15.6151 9.19898 15.5029 9.12761 15.3802 9.08002C15.1367 8.98 14.8636 8.98 14.6202 9.08002C14.4974 9.12761 14.3853 9.19898 14.2902 9.29002L9.29019 14.29C9.19695 14.3833 9.12299 14.4939 9.07253 14.6158C9.02207 14.7376 8.99609 14.8682 8.99609 15C8.99609 15.2663 9.10188 15.5217 9.29019 15.71C9.47849 15.8983 9.73388 16.0041 10.0002 16.0041C10.2665 16.0041 10.5219 15.8983 10.7102 15.71L14.0002 12.41V20C14.0002 20.2652 14.1055 20.5196 14.2931 20.7071C14.4806 20.8947 14.735 21 15.0002 21C15.2654 21 15.5198 20.8947 15.7073 20.7071C15.8948 20.5196 16.0002 20.2652 16.0002 20V12.41L19.2902 15.71C19.3831 15.8037 19.4937 15.8781 19.6156 15.9289C19.7375 15.9797 19.8682 16.0058 20.0002 16.0058C20.1322 16.0058 20.2629 15.9797 20.3848 15.9289C20.5066 15.8781 20.6172 15.8037 20.7102 15.71C20.8039 15.6171 20.8783 15.5065 20.9291 15.3846C20.9798 15.2627 21.006 15.132 21.006 15C21.006 14.868 20.9798 14.7373 20.9291 14.6154C20.8783 14.4936 20.8039 14.383 20.7102 14.29Z"
+                fill="white" />
+            </g>
+          </svg>
+        </button>
+      </div>
+    </form>
+
+    <ng-template #pendingTpl>
+      <div class="flex items-center gap-2">
+        <span class="inline-block h-2 w-2 animate-bounce rounded-full bg-emerald-500"></span>
+        <span class="inline-block h-2 w-2 animate-bounce rounded-full bg-emerald-500 [animation-delay:.15s]"></span>
+        <span class="inline-block h-2 w-2 animate-bounce rounded-full bg-emerald-500 [animation-delay:.3s]"></span>
+      </div>
+    </ng-template>
+  </section>
+</div>

@@ -1,0 +1,20 @@
+.frosted-glass {
+    border-radius: 20px;;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: #FFFFFF33;
+    border: 1px solid #FFFFFF66;
+  }
+
+  .background-lines {
+    /* Set the z-index to a negative value to ensure lines are behind the content */
+    z-index: 0;
+    /* Make sure the lines don't block mouse events on the content */
+    pointer-events: none;
+  }
+  
+  .background-lines .line {
+    width: 1px;
+    height: 70%;
+    background: #FFFFFF1A; /* Semi-transparent white to match the image */
+  }
